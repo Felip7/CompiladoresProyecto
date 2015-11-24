@@ -1,17 +1,28 @@
 package App;
-import Lexico.Leer;
+
 import java.io.*;
 
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 class dosPrueba1{
     
 
     public dosPrueba1(String f){
-        String bufferIn="";
+       
+         FileWriter fw = null;
+        try {
+            fw = new FileWriter("D:\\fichero1.csv");
+        } catch (IOException ex) {
+            Logger.getLogger(dosPrueba1.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         
+         
+        String bufferIn;
         try{
             DataInputStream in=new DataInputStream(new FileInputStream(f));//leemos nuestro archivo de entrada 
             try{
-                do
+                while((bufferIn=in.readLine())!=null)
                 {//mientras no lleguemos al fin del archivo...
                     int i=0;
                     String cad=bufferIn.trim();
@@ -24,15 +35,19 @@ class dosPrueba1{
                         {//comprobamos si es un digito
                             String ora="";
                             ora+=t;
-//                            int j=i+1;
-                            while(Character.isDigit(cad.charAt(j))){
+                            j=i+1;
+                            while(Character.isDigit(cad.charAt(j)))
+                            {
                            // mientras el siguiente elemento sea un numero
                                 ora+=cad.charAt(j);//concatenamos
                                 j++;
                                 if(j==cad.length())break;//rompemos si llegamos al final de la línea
                             }
                             i=j;//movemos a nuestra variable i en la cadena
-                            System.out.println("Número-->"+ora);
+                            
+                            System.out.println("Número: "+ora);
+                            fw.write("Numero: "+ora+"\n");
+                                 fw.flush();
                             continue;//pasamos al siguiente elemento
                         }//end if si es Digito
                        
@@ -40,7 +55,7 @@ class dosPrueba1{
                         {//comprobamos si es una letra
                             String ora="";
                             ora+=t;
-//                            int j=i+1;
+                            j=i+1;
                             while(Character.isLetterOrDigit(cad.charAt(j))){
 //                            mientras el siguiente elemento sea una letra o un digito
 //                            ya que las variables pueden ser con numeros
@@ -54,47 +69,56 @@ class dosPrueba1{
                             
                             {//comprobamos si es una palabra reservada
                                 System.out.println("Palabra reservada: "+ora);
+                                
+                                fw.write("Palabra reservada: "+ora+"\n");
+                                 fw.flush();
                             }
                             else
                             {//caso contrario es un identificador o variable
                                 System.out.println("Identificador: "+ora);
+                             
+                                fw.write("Identificador: "+ora+"\n");
+                                 fw.flush();
                             }
                             
                         }
                              
                              
-                             else if(!Character.isLetterOrDigit(cad.charAt(j)))
-                            {String ora="";
+                             else if(!Character.isLetterOrDigit(t))
+                            {
+                            String ora="";
                              ora+=t;
-//                            int j=i+1;
+                             j=i+1;
                             //mientras el siguiente elemento no sea una letra o un digito
-//                            literal(cad);
+                            while(Character.isLetterOrDigit(cad.charAt(j))==false){
                                 ora+=cad.charAt(j);
                                 j++;
                                 if(j==cad.length())
                                     break;
                             
-                            
-                            i=j;
-                            if(evaluarCaracter(t))
-                            {
-                                System.out.println("Operando compuesto: "+t);
                             }
-                            else 
+                            i=j;
+                            if(operando(ora))
                             {
-
-                                if(evaluarCaracter(t))
+                                System.out.println("Operando compuesto: "+ora);
+                                fw.write("Operando compuesto: "+ora+"\n");
+                                 fw.flush();
+                            }
+                            else if(evaluarCaracter(t))
                                 {
-                                    System.out.println("Caracter especial: "+t);
+                                    System.out.println("Caracter especial: "+ora);
+                                   fw.write("Caracter especial: "+ora+"\n");
+                                   fw.flush();;
                                 }
-                            } 
+//                            i++;
                           }
+                        
                         }
                         
-
+                    }
                      
             
-                }while((bufferIn=in.readLine())!=null);
+                
                 //end while
             }catch(IOException e){}
         }catch(FileNotFoundException e){}
@@ -200,6 +224,10 @@ class dosPrueba1{
                 return true;
             case "return":
                 return true;
+                case "true":
+                return true;
+             case "false":
+                return true;
 
         }
         return false;
@@ -221,13 +249,17 @@ class dosPrueba1{
         
     }
    
+
     
     public static void main(String ar[]){
-        
-        //Leer lexema;
-//        lexema = new Leer("entrada.txt");
+ 
         dosPrueba1 ds = new dosPrueba1("entrada_prueba_3.txt");
 
-    }
 
     }
+
+    
+}
+    
+
+
