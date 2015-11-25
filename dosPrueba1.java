@@ -13,7 +13,7 @@ class dosPrueba1{
        
          FileWriter fw = null;
         try {
-            fw = new FileWriter("D:\\fichero1.csv");
+            fw = new FileWriter("/Users/patriciochavez/Desktop/fichero1.csv");
         } catch (IOException ex) {
             Logger.getLogger(dosPrueba1.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -42,7 +42,8 @@ class dosPrueba1{
                            // mientras el siguiente elemento sea un numero
                                 ora+=cad.charAt(j);//concatenamos
                                 j++;
-                                if(j==cad.length())break;//rompemos si llegamos al final de la línea
+                                if(j==cad.length());
+                                    break;//rompemos si llegamos al final de la línea
                             }
                             i=j;//movemos a nuestra variable i en la cadena
                             
@@ -62,7 +63,10 @@ class dosPrueba1{
 //                            ya que las variables pueden ser con numeros
                                 ora+=cad.charAt(j);
                                 j++;
-                                if(j==cad.length())break;
+                                if(j==cad.length()){
+                                     break; 
+                                }
+                                  
                             }
                             i=j;
                            
@@ -85,7 +89,8 @@ class dosPrueba1{
                         }
                              
                               //mientras el siguiente elemento no sea una letra o un digito
-                            if (!Character.isLetterOrDigit(cad.charAt(i)) ) {
+                        else if (!Character.isLetterOrDigit(cad.charAt(i)) ) {
+                                String ora="";
                                 ora += cad.charAt(i);
                                 i++;
                                 if (i == cad.length()) {
@@ -107,6 +112,9 @@ class dosPrueba1{
                             else
                             {
                                  System.out.println("ERROR: "+t);
+                                 //Espacios vacios se toman como error
+                                 fw.write("ERROR: " + ora + "\n");
+                                fw.flush();
                             } 
                             
                           }
@@ -250,13 +258,10 @@ class dosPrueba1{
     
     public static void main(String ar[]){
  
-        dosPrueba1 ds = new dosPrueba1("entrada_prueba_3.txt");
+        dosPrueba1 ds = new dosPrueba1("/Users/patriciochavez/Desktop/entrada_prueba_3.txt");
 
 
     }
 
     
 }
-    
-
-
