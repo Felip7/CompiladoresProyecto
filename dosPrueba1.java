@@ -1,3 +1,4 @@
+/*Autores: Esteban Diaz, Carlos Osorio*/
 package App;
 
 import java.io.*;
@@ -83,34 +84,31 @@ class dosPrueba1{
                             
                         }
                              
-                             
-                             else if(!Character.isLetterOrDigit(t))
-                            {
-                            String ora="";
-                             ora+=t;
-                             j=i+1;
-                            //mientras el siguiente elemento no sea una letra o un digito
-                            while(Character.isLetterOrDigit(cad.charAt(j))==false){
-                                ora+=cad.charAt(j);
-                                j++;
-                                if(j==cad.length())
-                                    break;
-                            
-                            }
-                            i=j;
-                            if(operando(ora))
-                            {
-                                System.out.println("Operando compuesto: "+ora);
-                                fw.write("Operando compuesto: "+ora+"\n");
-                                 fw.flush();
-                            }
-                            else if(evaluarCaracter(t))
-                                {
-                                    System.out.println("Caracter especial: "+ora);
-                                   fw.write("Caracter especial: "+ora+"\n");
-                                   fw.flush();;
+                              //mientras el siguiente elemento no sea una letra o un digito
+                            if (!Character.isLetterOrDigit(cad.charAt(i)) ) {
+                                ora += cad.charAt(i);
+                                i++;
+                                if (i == cad.length()) {
+//                                    break;
                                 }
-//                            i++;
+
+                            i = j;
+                            if (evaluarCaracter(t)) {
+                                System.out.println("Caracter especial: " + t);
+                                fw.write("Caracter especial: " + t + "\n");
+                                fw.flush();
+                            
+                            } else if (
+                                operando(ora)) {
+                                System.out.println("Operando compuesto: " + ora);
+                                fw.write("Operando compuesto: " + ora + "\n");
+                                fw.flush();
+                            }
+                            else
+                            {
+                                 System.out.println("ERROR: "+t);
+                            } 
+                            
                           }
                         
                         }
@@ -124,59 +122,58 @@ class dosPrueba1{
         }catch(FileNotFoundException e){}
     }
      
+  public static boolean evaluarCaracter(char c) {
 
-    public static boolean evaluarCaracter(char c){
-       
-        switch(c)
-        {
+        switch (c) {
             case '(':
-                    return true;
+                return true;
             case ',':
                 return true;
             case ':':
-                    return true;
+                return true;
             case ';':
                 return true;
             case '<':
-                    return true;
+                return true;
             case '>':
                 return true;
             case '{':
-                    return true;
-            case ']':
                 return true;
             case '[':
-                    return true;
+                return true;
+            case ']':
+                return true;
             case '*':
                 return true;
             case ')':
-                    return true;
+                return true;
             case '+':
-                return true;   
+                return true;
             case '-':
                 return true;
             case '/':
-                    return true;
+                return true;
             case '!':
                 return true;
-
+            case '}':
+                return true;
             case '&':
                 return true;
             case '$':
-                    return true;
+                return true;
             case '=':
-                return true;   
-                
+                return true;
+            case '"':
+                return true;
 
         }
         return false;
     }
-     
-    public static boolean operando(String c){
+
+    public static boolean operando(String c) {
 //        <= >= == != && ||
-    
-        switch(c)
-        {
+
+        switch (c) {
             case ">=":
                 return true;
             case "<=":
@@ -189,15 +186,15 @@ class dosPrueba1{
                 return true;
             case "||":
                 return true;
+            case "++":
+                return true;
         }
         return false;
     }
-     
 
-    public static boolean palabraReservada(String cad){
+    public static boolean palabraReservada(String cad) {
 //        int, float, bool, char, string, if, then, else, while, do, input, output, return
-        switch(cad)
-        {
+        switch (cad) {
             case "int":
                 return true;
             case "float":
@@ -224,15 +221,15 @@ class dosPrueba1{
                 return true;
             case "return":
                 return true;
-                case "true":
+                //esto agregamos
+            case "true":
                 return true;
-             case "false":
+            case "false":
                 return true;
 
         }
         return false;
-        
-        
+
     }
     
     
