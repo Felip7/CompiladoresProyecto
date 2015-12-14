@@ -1,0 +1,77 @@
+
+package Sintax;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+ 
+public class Sintactico {
+
+    int NumeroLineas=1;
+    
+    public static void main(String[] args) {
+
+	Sintactico obj = new Sintactico();
+	obj.Sintac();
+
+  }
+    
+    public void Sintac() {
+
+	String csvFile = "D:\\salida.csv";
+	BufferedReader br = null;
+	String line = "";
+	String cvsSplitBy = ",";
+        String no[]= {"Numero","Caracter especial","Operando Compuesto","Literal"};
+        String acep[]={"Identificador"};
+        String pri[]={"Palabra reservada"};
+         String head[]={"Encabezado"};
+        
+	try {
+
+		br = new BufferedReader(new FileReader(csvFile));
+		while ((line = br.readLine()) != null) 
+                {
+
+			String[] tc;
+                        tc = line.split(cvsSplitBy);
+                        int i=0;
+                        
+                        if (tc[i].equals(head[i]))
+                        {
+                        
+                            
+//                             if(country[i].equals(acep[0]))
+//                             {
+                                  System.out.println("Encabezado correcto "+NumeroLineas);
+//                             }
+                                 
+                        }
+                        else if (tc[0].equals(no[0]) ||
+                                 tc[0].equals(no[1]) || 
+                                 tc[0].equals(no[2]) || 
+                                 tc[0].equals(no[3]) ||
+                                 tc[0].equals(acep[0]) )
+                        {
+                            System.out.println("Error sintactico en línea "+NumeroLineas);
+                        }
+//			System.out.println("Token Class= " + country[0] +", Lexema=" + country[1] );
+                        NumeroLineas++;
+		}
+               
+
+	} catch (FileNotFoundException e) {
+	} catch (IOException e) {
+	} finally {
+		if (br != null) {
+			try {
+				br.close();
+			} catch (IOException e) {
+			}
+		}
+	}
+
+  }
+
+}
+
