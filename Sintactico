@@ -1,9 +1,12 @@
 
 package Sintax;
-import java.io.BufferedReader;
+import com.opencsv.CSVReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
  
 public class Sintactico {
 
@@ -18,60 +21,59 @@ public class Sintactico {
     
     public void Sintac() {
 
-	String csvFile = "D:\\salida.csv";
-	BufferedReader br = null;
-	String line = "";
-	String cvsSplitBy = ",";
-        String no[]= {"Numero","Caracter especial","Operando Compuesto","Literal"};
-        String acep[]={"Identificador"};
-        String pri[]={"Palabra reservada"};
-         String head[]={"Encabezado"};
-        
-	try {
 
-		br = new BufferedReader(new FileReader(csvFile));
-		while ((line = br.readLine()) != null) 
-                {
-
-			String[] tc;
-                        tc = line.split(cvsSplitBy);
-                        int i=0;
-                        
-                        if (tc[i].equals(head[i]))
-                        {
-                        
-                            
-//                             if(country[i].equals(acep[0]))
-//                             {
-                                  System.out.println("Encabezado correcto "+NumeroLineas);
-//                             }
-                                 
-                        }
-                        else if (tc[0].equals(no[0]) ||
-                                 tc[0].equals(no[1]) || 
-                                 tc[0].equals(no[2]) || 
-                                 tc[0].equals(no[3]) ||
-                                 tc[0].equals(acep[0]) )
-                        {
-                            System.out.println("Error sintactico en línea "+NumeroLineas);
-                        }
+        try {
+            CSVReader csvReader = new CSVReader(new FileReader("D:\\salida.csv"));
+            String[] row;
+         
+            String no[]= {"Numero","Caracter especial","Operando Compuesto","Literal"};
+            String acep[]={"Identificador"};
+            String pri[]={"Palabra reservada"};
+            String head[]={"Encabezado"};
+            int i=0;
+            try {
+                while((row = csvReader.readNext()) != null) {
+                    
+                    
+                    if (row[0].equals(head[0]))
+                    {
+                        System.out.println("Encabezado correcto "+NumeroLineas+" "+i);
+                    }
+                    
+                    else if(row[i].equals(pri[0]))
+                           
+                    {
+                        System.out.println("E "+NumeroLineas);
+                    }
+                    
+                    else if (row[0].equals(no[0]) ||
+                            row[0].equals(no[1]) ||
+                            row[0].equals(no[2]) ||
+                            row[0].equals(no[3]) ||
+                            row[0].equals(acep[0]) )
+                    {
+                        System.out.println("Error sintactico en línea "+NumeroLineas+" "+i);
+                    }
 //			System.out.println("Token Class= " + country[0] +", Lexema=" + country[1] );
-                        NumeroLineas++;
-		}
+                    
+                    NumeroLineas++;
+                    i++;
+                }
+                csvReader.close();
+            } catch (IOException ex) {
+                Logger.getLogger(Sintactico.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Sintactico.class.getName()).log(Level.SEVERE, null, ex);
+        }
+                       
+		
                
 
-	} catch (FileNotFoundException e) {
-	} catch (IOException e) {
-	} finally {
-		if (br != null) {
-			try {
-				br.close();
-			} catch (IOException e) {
-			}
-		}
+	
 	}
 
   }
 
-}
+
 
