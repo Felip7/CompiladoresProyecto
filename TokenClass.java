@@ -115,13 +115,22 @@ public class TokenClass {
                 return true;
             case "for":
                 return true;
+            
 
         }
         return false;
 
     }
     
-    
+   public static boolean encabezado(String cad)
+   {
+       switch(cad)
+       {
+       case "include":
+       return true;
+       }
+       return false;
+   }
    public static boolean espacio(char t){
        char c=' ';
    
@@ -141,8 +150,8 @@ public class TokenClass {
 
                             if (evaluarCaracter(t)) {
                                
-                                    System.out.println("Caracter especial: " + t);
-                                    fw1.write("Caracter especial: " + t +",");
+                                    System.out.println("Caracter especial, " + t);
+                                    fw1.write("Caracter especial, " + t);
                                     fw1.newLine();
                                     fw1.flush();
                                 
@@ -191,8 +200,8 @@ public class TokenClass {
                         if (operando(ora)) 
                          {
            
-                            System.out.println("Operando compuesto: " + ora);
-                            fw1.write("Operando compuesto: " + ora+",");
+                            System.out.println("Operando compuesto, " + ora);
+                            fw1.write("Operando compuesto, " + ora);
                             fw1.newLine();
                             fw1.flush();
                             return true;
@@ -217,9 +226,9 @@ public class TokenClass {
        {
            if(cad.length()==1)
            {
-               System.out.println("Identificador: "+t);
+               System.out.println("Identificador, "+t);
                              
-                                fw1.write("Identificador: "+t+",");
+                                fw1.write("Identificador, "+t);
                                 fw1.newLine();
                                  fw1.flush();
            }
@@ -244,17 +253,25 @@ public class TokenClass {
                             if(palabraReservada(ora))
                             
                             {//comprobamos si es una palabra reservada
-                                System.out.println("Palabra reservada: "+ora);
+                                System.out.println("Palabra reservada, "+ora);
                                 
-                                fw1.write("Palabra reservada: "+ora+",");
+                                fw1.write("Palabra reservada, "+ora);
                                 fw1.newLine();
                                  fw1.flush();
                             }
-                            else
+                            else if (encabezado(ora))
+                            {
+                                System.out.println("Encabezado, "+ora);
+                                
+                                fw1.write("Encabezado, "+ora);
+                                fw1.newLine();
+                                 fw1.flush();
+                            }
+                             else
                             {//caso contrario es un identificador o variable
-                                System.out.println("Identificador: "+ora);
+                                System.out.println("Identificador, "+ora);
                              
-                                fw1.write("Identificador: "+ora+",");
+                                fw1.write("Identificador, "+ora);
                                 fw1.newLine();
                                  fw1.flush();
                             }
