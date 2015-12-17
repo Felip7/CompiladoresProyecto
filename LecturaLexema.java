@@ -35,8 +35,8 @@ public class LecturaLexema {
                           
                            if (cad.length()==1)
                                    {
-                                       System.out.println("Número: "+t);
-                                    fw1.write("Numero: "+t+",");
+                                       System.out.println("Número, "+t);
+                                    fw1.write("Numero, "+t);
                                     fw1.newLine();
                                     fw1.flush(); 
                                     break;
@@ -54,8 +54,8 @@ public class LecturaLexema {
                                            
                                            ca+=cad.charAt(j);//concatenamos
                                            j++;
-                                           System.out.println("Número: "+ca);
-                                           fw1.write("Numero: "+ca+",");
+                                           System.out.println("Número, "+ca);
+                                           fw1.write("Numero, "+ca);
                                            fw1.newLine();
                                            fw1.flush();
                                         }
@@ -83,8 +83,8 @@ public class LecturaLexema {
                                            sd+=cad.charAt(2);
                                            
                                           
-                                           System.out.println("Número: "+sd);
-                                           fw1.write("Numero: "+sd+",");
+                                           System.out.println("Número, "+sd);
+                                           fw1.write("Numero, "+sd);
                                            fw1.newLine();
                                            fw1.flush();
                                          j++;
@@ -111,8 +111,8 @@ public class LecturaLexema {
                                            sd+=cad.charAt(1);//concatenamos
                                            sd+=cad.charAt(2);
                                            sd+=cad.charAt(3);
-                                           System.out.println("Número: "+t+sd);
-                                           fw1.write("Numero: "+ca+sd+",");
+                                           System.out.println("Número, "+t+sd);
+                                           fw1.write("Numero, "+ca+sd);
                                            fw1.newLine();
                                            fw1.flush();
                                            j++;
