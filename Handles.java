@@ -13,7 +13,7 @@ public class Handles {
                 {
                        
                         //csv file containing data
-                        String strFile = "D:\\k.csv";
+                        String strFile = "D:\\salida.csv";
                        
                         //create BufferedReader to read csv file
                         BufferedReader br = new BufferedReader( new FileReader(strFile));
