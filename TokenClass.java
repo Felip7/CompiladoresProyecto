@@ -204,9 +204,9 @@ public class TokenClass {
         try
         {
         switch (cad) {
-            case "int":
-                System.out.println("Tipo de dato, " + cad);
-                                    fw1.write("Tipo de dato, " + cad    );
+            case "int:":
+                System.out.println("Tipodedato, " + cad);
+                                    fw1.write("Tipodedato, " + cad    );
                                     fw1.newLine();
                                     fw1.flush();
                 return true;
@@ -433,6 +433,26 @@ public class TokenClass {
                         else if (identificadorCompuesto(t, cad, fw1, nrol))
                         {      
                         }
+                        else 
+                        {
+                           
+                            if (cad.contains("(")&& cad.contains(")"))
+                            {
+                                 
+                                String [] palabras = cad.split(" ");
+                                
+                                for(int z=0; z<=cad.length(); z++)           {
+                                    
+                                    String part1 = palabras[z];
+                                    String part2 = palabras[z+1];
+                                    System.out.println(part1+"__"+part2);
+                                    if(palabraReservada(part1, fw1))
+                                    {
+                                        if(Letra(t, part2, fw1, nrol)){}
+                                    }
+                                break; } 
+        }
+                        }
 
            }
        }    catch (IOException ex) {
@@ -443,6 +463,7 @@ public class TokenClass {
 
     public static boolean identificadorCompuesto(char t, String cad, BufferedWriter fw1, int NroL) 
     {
+//        System.out.println(cad.length()+"");
         try {
         if (cad.contains(" "))
         {
@@ -469,7 +490,7 @@ public class TokenClass {
                 String part1 = palabras[z];
                 String part2 = palabras[z+1];
 
-                    System.out.println(part1+"---"+part2);
+//                    System.out.println(part1+"---"+part2);
                     if(palabraReservada(part1, fw1))
                     {
                         if(Letra(t, part2, fw1, NroL)){}
@@ -478,13 +499,14 @@ public class TokenClass {
                     {
                         if (Numeros(t, part2, fw1, NroL));
                     }
+                    break;
                 } 
             }
         else if(Character.isLetter(cad.charAt(0)))
         {
 
-                String [] palabras = cad.split(";");
-                System.out.println(palabras.length+"---");
+//                String [] palabras = cad.split(";");
+//                System.out.println(palabras.length+"---");
                
                 System.out.println("Identificador, "+cad);
                 fw1.write("Identificador, "+cad);
