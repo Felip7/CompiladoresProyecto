@@ -1,5 +1,6 @@
 
-package Sintax;
+package Syntax;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -24,8 +25,8 @@ public class Sintactico {
             line = br.readLine();
 //            System.out.println(part1+"__"+part2+"__"+part3+"__"+part4);
 
-            String no[]= {"Numero","Caracter especial","Operando Compuesto",
-                "Literal","Identificador","Palabra reservada","OperadorUnario","Valorbooleano","Tipodedato"};
+//            String no[]= {"Numero","Caracter especial","Operando Compuesto",
+//                "Literal","Identificador","Palabra reservada","OperadorUnario","Valorbooleano","Tipodedato"};
             int i=0;
             int tokenNumber=0;
             
@@ -43,6 +44,7 @@ public class Sintactico {
                         if(part.equals(part1))
                         {
                              System.out.println("Es declaración, en línea "+NumeroLineas+" : "+part1+" "+part2);
+                             break;
                         }
                         else
                         {
@@ -67,8 +69,6 @@ public class Sintactico {
         }
   }
 }
-
-
 
 
 
