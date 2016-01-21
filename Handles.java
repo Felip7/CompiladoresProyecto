@@ -1,6 +1,7 @@
 
-package Sintax;
- import java.io.BufferedReader;
+package Syntax;
+
+import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.StringTokenizer;
  
