@@ -16,19 +16,20 @@ public class TokenClass {
         switch (c) {
             case '(':
                 System.out.println("Caracter especial, " + c);
-                                    fw1.write("Caracter especial, " + c    );
+                                    fw1.write("Caracterespecial, " + c    );
                                     fw1.newLine();
                                     fw1.flush();
                 return true;
+                
             case ',':
                                     System.out.println("Caracter especial, " + c);
-                                    fw1.write("Caracter especial, " + c    );
+                                    fw1.write("Caracterespecial, " + c    );
                                     fw1.newLine();
                                     fw1.flush();
                 return true;
             case ':':
                                     System.out.println("Caracter especial, " + c);
-                                    fw1.write("Caracter especial, " + c    );
+                                    fw1.write("Caracterespecial, " + c    );
                                     fw1.newLine();
                                     fw1.flush();
                 return true;
@@ -40,97 +41,97 @@ public class TokenClass {
                 return true;
             case '<':
                 System.out.println("Operador unario, " + c);
-                                    fw1.write("Operador unario, " + c    );
+                                    fw1.write("Operadorunario, " + c    );
                                     fw1.newLine();
                                     fw1.flush();
                 return true;
             case '>':
                 System.out.println("Operador unario, " + c);
-                                    fw1.write("Operador unario, " + c    );
+                                    fw1.write("Operadorunario, " + c    );
                                     fw1.newLine();
                                     fw1.flush();
                 return true;
             case '{':
                 System.out.println("Caracter especial, " + c);
-                                    fw1.write("Caracter especial, " + c    );
+                                    fw1.write("Caracterespecial, " + c    );
                                     fw1.newLine();
                                     fw1.flush();
                 return true;
             case '[':
                  System.out.println("Caracter especial, " + c);
-                                    fw1.write("Caracter especial, " + c    );
+                                    fw1.write("Caracterespecial, " + c    );
                                     fw1.newLine();
                                     fw1.flush();
                 return true;
             case ']':
                  System.out.println("Caracter especial, " + c);
-                                    fw1.write("Caracter especial, " + c    );
+                                    fw1.write("Caracterespecial, " + c    );
                                     fw1.newLine();
                                     fw1.flush();
                 return true;
             case '*':
                 System.out.println("Operador unario, " + c);
-                                    fw1.write("Operador unario, " + c    );
+                                    fw1.write("Operadorunario, " + c    );
                                     fw1.newLine();
                                     fw1.flush();
                 return true;
             case ')':
                 System.out.println("Caracter especial, " + c);
-                                    fw1.write("Caracter especial, " + c    );
+                                    fw1.write("Caracterespecial, " + c    );
                                     fw1.newLine();
                                     fw1.flush();
                 return true;
             case '+':
                 System.out.println("Operador unario, " + c);
-                                    fw1.write("Operador unario, " + c );
+                                    fw1.write("Operadorunario, " + c );
                                     fw1.newLine();
                                     fw1.flush();
                 return true;
             case '-':
                 System.out.println("Operador unario, " + c);
-                                    fw1.write("Operador unario, " + c);
+                                    fw1.write("Operadorunario, " + c);
                                     fw1.newLine();
                                     fw1.flush();
                 return true;
             case '/':
                 System.out.println("Operador unario, " + c);
-                                    fw1.write("Operador unario, " + c );
+                                    fw1.write("Operadorunario, " + c );
                                     fw1.newLine();
                                     fw1.flush();
                 return true;
             case '!':
                 System.out.println("Caracter especial, " + c);
-                                    fw1.write("Caracter especial, " + c);
+                                    fw1.write("Caracterespecial, " + c);
                                     fw1.newLine();
                                     fw1.flush();
                 return true;
             case '}':
                 System.out.println("Caracter especial, " + c);
-                                    fw1.write("Caracter especial, " + c    );
+                                    fw1.write("Caracterespecial, " + c    );
                                     fw1.newLine();
                                     fw1.flush();
                 return true;
             case '&':
                 System.out.println("Caracter especial, " + c);
-                                    fw1.write("Caracter especial, " + c    );
+                                    fw1.write("Caracterespecial, " + c    );
                                     fw1.newLine();
                                     fw1.flush();
                 return true;
             case '$':
                 System.out.println("Caracter especial, " + c);
-                                    fw1.write("Caracter especial, " + c    );
+                                    fw1.write("Caracterespecial, " + c    );
                                     fw1.newLine();
                                     fw1.flush();
                 return true;
             case '=':
                 System.out.println("Operador unario, " + c);
-                                    fw1.write("Operador unario, " + c    );
+                                    fw1.write("Operadorunario, " + c    );
                                     fw1.newLine();
                                     fw1.flush();
                 return true;
             case '"':
                 System.out.println("Caracter especial, " + c);
-                                    fw1.write("Caracter especial, " + c    );
+                                    fw1.write("Caracterespecial, " + c    );
                                     fw1.newLine();
                                     fw1.flush();
                 return true;
@@ -146,49 +147,49 @@ public class TokenClass {
         switch (c) {
             case ">=":
                 System.out.println("Operador binario, " + c);
-                                    fw1.write("Operador binario, " + c    );
+                                    fw1.write("Operadorbinario, " + c    );
                                     fw1.newLine();
                                     fw1.flush();
                 return true;
             case "<=":
                 System.out.println("Operador binario, " + c);
-                                    fw1.write("Operador binario, " + c    );
+                                    fw1.write("Operadorbinario, " + c    );
                                     fw1.newLine();
                                     fw1.flush();
                 return true;
             case "==":
                 System.out.println("Operador binario, " + c);
-                                    fw1.write("Operador binario, " + c    );
+                                    fw1.write("Operadorbinario, " + c    );
                                     fw1.newLine();
                                     fw1.flush();
                 return true;
             case "!=":
                 System.out.println("Operador binario: " + c);
-                                    fw1.write("Operador binario, " + c    );
+                                    fw1.write("Operadorbinario, " + c    );
                                     fw1.newLine();
                                     fw1.flush();
                 return true;
             case "&&":
                 System.out.println("Operador binario: " + c);
-                                    fw1.write("Operador binario, " + c    );
+                                    fw1.write("Operadorbinario, " + c    );
                                     fw1.newLine();
                                     fw1.flush();
                 return true;
             case "||":
                 System.out.println("Operador binario: " + c);
-                                    fw1.write("Operador binario, " + c    );
+                                    fw1.write("Operadorbinario, " + c    );
                                     fw1.newLine();
                                     fw1.flush();
                 return true;
             case "++":
                 System.out.println("Operador binario: " + c);
-                                    fw1.write("Operador binario, " + c    );
+                                    fw1.write("Operadorbinario, " + c    );
                                     fw1.newLine();
                                     fw1.flush();
                 return true;
             case "+=":
                 System.out.println("Operador binario: " + c);
-                                    fw1.write("Operador binario, " + c    );
+                                    fw1.write("Operadorbinario, " + c    );
                                     fw1.newLine();
                                     fw1.flush();
                 return true;
@@ -199,107 +200,204 @@ public class TokenClass {
         return false;
     }
 
-    public static boolean palabraReservada(String cad, BufferedWriter fw1) {
-//        int, float, bool, char, string, if, then, else, while, do, input, output, return
+    public static boolean palabraRes (String cad, BufferedWriter fw1, int nrol)
+    {
+        String part1="";
         try
         {
+            System.out.println(cad.length()+"");
+            
+            if (cad.contains(" "))
+            {
+                String [] palabras = cad.split(" ");
+//            System.out.println(palabras.length+"");
+                
+                for (int z=0; z<palabras.length; z++) {
+                    part1 = palabras[z];
+//                    System.out.println(z+" "+part1);
+                    if(part1.equals("int")|| part1.equals("float")|| part1.equals("string")||part1.equals("bool")||part1.equals("char") )
+                    {
+                        System.out.println("Tipo de dato, " +part1);
+                        fw1.write("Tipodedato, " + part1    );
+                        fw1.newLine();
+                        fw1.flush();
+                    }
+                    else if (operandoFunciones(part1, fw1, nrol)){}
+                    else
+                    {
+                        if(Character.isLetter(part1.charAt(0))&& Letra(part1.charAt(0), part1, fw1, nrol)==false);
+                        else {evaluarCaracter(part1.charAt(0), fw1);}
+                    }
+                    
+                }
+                
+//                if(evaluarCaracter(part1.charAt(0), fw1)){/*System.out.println(part1+"");*/}
+            }
+
+        
+         }catch (IOException ex) {
+                                    Logger.getLogger(TokenClass.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+
+     return false;   
+    }
+    
+     public static boolean operandoFunciones(String c, BufferedWriter fw1, int nrol)
+     {
+         try{
+        switch (c) {
+            case "[]:":
+                //Inicializar vectores vacíos
+                c="[0]:";
+                System.out.println("operadorFuncionvacio, " + c );
+                                    fw1.write("operadorFuncionvacio, " + c    );
+                                    fw1.newLine();
+                                    fw1.flush();
+                return true;
+            case "[0]:":
+                System.out.println("operadorFuncion, " + c);
+                                    fw1.write("operadorFuncion, " + c    );
+                                    fw1.newLine();
+                                    fw1.flush();
+                return true;
+            case "[1]:":
+                System.out.println("operadorFuncion, " + c);
+                                    fw1.write("operadorFuncion, " + c    );
+                                    fw1.newLine();
+                                    fw1.flush();
+                return true;
+            case "[2]:":
+                System.out.println("operadorFuncion, " + c);
+                                    fw1.write("operadorFuncion, " + c    );
+                                    fw1.newLine();
+                                    fw1.flush();
+                return true;
+            case "[3]:":
+                System.out.println("operadorFuncion, " + c);
+                                    fw1.write("operadorFuncion, " + c    );
+                                    fw1.newLine();
+                                    fw1.flush();
+                return true;    
+             case "[4]:":
+                System.out.println("operadorFuncion, " + c);
+                                    fw1.write("operadorFuncion, " + c    );
+                                    fw1.newLine();
+                                    fw1.flush();
+                return true;
+            case "[5]:":
+                System.out.println("operadorFuncion, " + c);
+                                    fw1.write("operadorFuncion, " + c    );
+                                    fw1.newLine();
+                                    fw1.flush();
+                return true;     
+            case "[6]:":
+                System.out.println("operadorFuncion, " + c);
+                                    fw1.write("operadorFuncion, " + c    );
+                                    fw1.newLine();
+                                    fw1.flush();
+                return true;
+            case "[7]:":
+                System.out.println("operadorFuncion, " + c);
+                                    fw1.write("operadorFuncion, " + c    );
+                                    fw1.newLine();
+                                    fw1.flush();
+                return true;
+            case "[8]:":
+                System.out.println("operadorFuncion, " + c);
+                                    fw1.write("operadorFuncion, " + c    );
+                                    fw1.newLine();
+                                    fw1.flush();
+                return true;
+            case "[9]:":
+                System.out.println("operadorFuncion, " + c);
+                                    fw1.write("operadorFuncion, " + c    );
+                                    fw1.newLine();
+                                    fw1.flush();
+                return true;    
+////             default:
+////                 System.out.println("Valor entre corchetes no admitido. ERROR SINTACTICO en línea " + nrol);
+                 
+        }
+        }catch (IOException ex) {
+                                    Logger.getLogger(TokenClass.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+        return false;
+     }
+    public static boolean palabraReservada(String cad, BufferedWriter fw1) {
+//        int, float, bool, char, string, if, then, else, while, do, input, output, return
+//        System.out.println(cad+" "+cad.length());
+       
+        try
+        {            
         switch (cad) {
-            case "int:":
-                System.out.println("Tipodedato, " + cad);
-                                    fw1.write("Tipodedato, " + cad    );
-                                    fw1.newLine();
-                                    fw1.flush();
-                return true;
-            case "float":
-                 System.out.println("Tipo de dato, " + cad);
-                                    fw1.write("Tipo de dato, " + cad    );
-                                    fw1.newLine();
-                                    fw1.flush();
-                return true;
-            case "boolean":
-                 System.out.println("Tipo de dato, " + cad);
-                                    fw1.write("Tipo de dato, " + cad    );
-                                    fw1.newLine();
-                                    fw1.flush();
-                return true;
-            case "char":
-                 System.out.println("Tipo de dato, " + cad);
-                                    fw1.write("Tipo de dato, " + cad    );
-                                    fw1.newLine();
-                                    fw1.flush();
-                return true;
-            case "string":
-                 System.out.println("Tipo de dato, " + cad);
-                                    fw1.write("Tipo de dato, " + cad    );
-                                    fw1.newLine();
-                                    fw1.flush();
-                return true;
+            
+            
             case "if":
                  System.out.println("Palabra reservada, "+cad);
-                fw1.write("Palabra reservada, "+cad   );
-                fw1.newLine();
-                fw1.flush();
+                                    fw1.write("Palabrareservada, "+cad   );
+                                    fw1.newLine();
+                                    fw1.flush();
                 return true;
             case "then":
                  System.out.println("Palabra reservada, "+cad);
-                fw1.write("Palabra reservada, "+cad   );
-                fw1.newLine();
-                fw1.flush();
+                                    fw1.write("Palabrareservada, "+cad   );
+                                    fw1.newLine();
+                                    fw1.flush();
                 return true;
             case "else":
                  System.out.println("Palabra reservada, "+cad);
-                fw1.write("Palabra reservada, "+cad   );
-                fw1.newLine();
-                fw1.flush();
+                                    fw1.write("Palabrareservada, "+cad   );
+                                    fw1.newLine();
+                                    fw1.flush();
                 return true;
             case "while":
                  System.out.println("Palabra reservada, "+cad);
-                fw1.write("Palabra reservada, "+cad   );
-                fw1.newLine();
-                fw1.flush();
+                                    fw1.write("Palabrareservada, "+cad   );
+                                    fw1.newLine();
+                                    fw1.flush();
                 return true;
             case "do":
                  System.out.println("Palabra reservada, "+cad);
-                fw1.write("Palabra reservada, "+cad   );
-                fw1.newLine();
-                fw1.flush();
+                                    fw1.write("Palabrareservada, "+cad   );
+                                    fw1.newLine();
+                                    fw1.flush();
                 return true;
             case "input":
                 System.out.println("Palabra reservada, "+cad);
-                fw1.write("Palabra reservada, "+cad   );
-                fw1.newLine();
-                fw1.flush();
+                                    fw1.write("Palabrareservada, "+cad   );
+                                    fw1.newLine();
+                                    fw1.flush();
                 return true;
             case "output":
                 System.out.println("Palabra reservada, "+cad);
-                fw1.write("Palabra reservada, "+cad   );
-                fw1.newLine();
-                fw1.flush();
+                                    fw1.write("Palabrareservada, "+cad   );
+                                    fw1.newLine();
+                                    fw1.flush();
                 return true;
             case "return":
                 System.out.println("Palabra reservada, "+cad);
-                fw1.write("Palabra reservada, "+cad   );
-                fw1.newLine();
-                fw1.flush();
+                                    fw1.write("Palabrareservada, "+cad   );
+                                    fw1.newLine();
+                                    fw1.flush();
                 return true;
             case "true":
                 System.out.println("Valor booleano, "+cad);
-                fw1.write("Valor booleano, "+cad   );
-                fw1.newLine();
-                fw1.flush();
+                                    fw1.write("Valorbooleano, "+cad   );
+                                    fw1.newLine();
+                                    fw1.flush();
                 return true;
             case "false":
                 System.out.println("Valor booleano, "+cad);
-                fw1.write("Valor booleano, "+cad   );
-                fw1.newLine();
-                fw1.flush();
+                                        fw1.write("Valorbooleano, "+cad   );
+                                        fw1.newLine();
+                                        fw1.flush();
                 return true;
-            case "for":
-                 System.out.println("Palabra reservada, "+cad);
-                fw1.write("Palabra reservada, "+cad   );
-                fw1.newLine();
-                fw1.flush();
-                return true;
+//            case "for":
+//                 System.out.println("Palabra reservada, "+cad);
+//                                       fw1.write("Palabrareservada, "+cad   );
+//                                       fw1.newLine();
+//                                       fw1.flush();
+//                return true;
 
         }
           }catch (IOException ex) {
@@ -381,7 +479,7 @@ public class TokenClass {
        String c="";
        try    
        {
-    
+//           System.out.println(cad.length()+" x "+cad);
            switch(cad.length())
                 {
                     case 1:
@@ -390,10 +488,11 @@ public class TokenClass {
                         fw1.newLine();
                         fw1.flush();
                         return true;
+                        
                     case 2:
                         if(Character.isLetter(cad.charAt(1))==true)
                         {   
-                            if(palabraReservada(cad, fw1)){}
+                            if(palabraRes(cad, fw1, nrol)){}
                         }
                         else if(Character.isDigit(cad.charAt(1)))
                         {
@@ -403,58 +502,84 @@ public class TokenClass {
                            fw1.flush();
                         }
                         else if(Character.isLetterOrDigit(cad.charAt(1))==false)
-                        {
-                            if(Character.isLetter(cad.charAt(0)))
-                            {
-                                System.out.println("Identificador, "+cad.charAt(0));
+                        {   if(Character.isLetter(cad.charAt(0)))
+                            {   System.out.println("Identificador, "+cad.charAt(0));
                                 fw1.write("Identificador, "+cad.charAt(0));
                                 fw1.newLine();
                                 fw1.flush();
                                 evaluarCaracter(cad.charAt(1), fw1);
-                            }
-                            
-                        }
-                        return true;
+                            }} return true;
                         
                     case 3:  
+                        if(Character.isLetter(cad.charAt(0))) {
 
-                        if(Character.isLetter(cad.charAt(0)) && Character.isDigit(cad.charAt(1)) && Character.isDigit(cad.charAt(2)))
-                        {
-                            System.out.println("Identificador, "+cad);
-                        }
-                    else
-                        {
-                             System.out.println(" ERROR LÉXICO "+"en línea " +nrol);
-                        }
-                     
-                }     
-                    if(cad.length()>3){ 
-                        if(palabraReservada(cad, fw1)){}
-                        else if (identificadorCompuesto(t, cad, fw1, nrol))
-                        {      
-                        }
-                        else 
-                        {
-                           
-                            if (cad.contains("(")&& cad.contains(")"))
-                            {
-                                 
-                                String [] palabras = cad.split(" ");
-                                
-                                for(int z=0; z<=cad.length(); z++)           {
-                                    
-                                    String part1 = palabras[z];
-                                    String part2 = palabras[z+1];
-                                    System.out.println(part1+"__"+part2);
-                                    if(palabraReservada(part1, fw1))
-                                    {
-                                        if(Letra(t, part2, fw1, nrol)){}
-                                    }
-                                break; } 
-        }
-                        }
-
-           }
+                        if (Character.isLetter(cad.charAt(1)) && Character.isLetter(cad.charAt(2)))
+                        {System.out.println("Identificador, "+cad);}
+                        else {System.out.println("ERROR LÉXICO "+"en línea " +nrol);}}                    
+                        return true;
+                    case 4:
+                        if(Character.isLetter(cad.charAt(0))) {
+                            if (Character.isLetter(cad.charAt(1)) && Character.isLetter(cad.charAt(2)))
+                            {System.out.println("Identificador, "+cad);}
+                            else{ System.out.println("ERROR LÉXICO "+"en línea " +nrol);}}
+                    return true;
+                     case 5:
+                        if(Character.isLetter(cad.charAt(0))) {
+                            if (Character.isLetter(cad.charAt(1)) && Character.isLetter(cad.charAt(2)))
+                            {System.out.println("Identificador, "+cad);}
+                            else{ System.out.println("ERROR LÉXICO "+"en línea " +nrol);}}
+                     return true;
+                     case 6:
+                        if(Character.isLetter(cad.charAt(0))) {
+                            if (Character.isLetter(cad.charAt(1)) && Character.isLetter(cad.charAt(2)))
+                            {System.out.println("Identificador, "+cad);}
+                            else{ System.out.println("ERROR LÉXICO "+"en línea " +nrol);}}
+                     return true;
+                     case 7:
+                        if(Character.isLetter(cad.charAt(0))) {
+                            if (Character.isLetter(cad.charAt(1)) && Character.isLetter(cad.charAt(2)))
+                            {System.out.println("Identificador, "+cad);}
+                            else{ System.out.println("ERROR LÉXICO "+"en línea " +nrol);}} 
+                     return true;
+                        
+                    case 8:
+                        Identificador(cad, fw1, nrol);
+                        return true;
+                    case 9:
+                        Identificador(cad, fw1, nrol);
+                        return true;
+                    case 11:
+                        if( cad.charAt(4)=='['|| cad.charAt(5)=='['|| cad.charAt(6)=='[' || cad.charAt(7)=='['){palabraRes(cad, fw1, nrol);}
+                        else{Identificador(cad, fw1, nrol);}
+                        return true;
+                    case 12:
+                        if( cad.charAt(4)=='['|| cad.charAt(5)=='['|| cad.charAt(6)=='[' || cad.charAt(7)=='['){palabraRes(cad, fw1, nrol);}
+                        else{Identificador(cad, fw1, nrol);}
+                        return true;
+                    case 13:
+                        if( cad.charAt(4)=='['|| cad.charAt(5)=='['|| cad.charAt(6)=='[' || cad.charAt(7)=='['){palabraRes(cad, fw1, nrol);}
+                        else{Identificador(cad, fw1, nrol);}
+                        return true;
+                    case 14:
+                        if( cad.charAt(4)=='['|| cad.charAt(5)=='['|| cad.charAt(6)=='[' || cad.charAt(7)=='['){palabraRes(cad, fw1, nrol);}
+                        else{Identificador(cad, fw1, nrol);}
+                        return true;        
+                    case 15:
+                             palabraRes(cad, fw1, nrol);
+                        return true;
+                        case 16:
+                             palabraRes(cad, fw1, nrol);
+                        return true;
+                            case 17:
+                             palabraRes(cad, fw1, nrol);
+                        return true;
+                    case 18:
+                            palabraRes(cad, fw1, nrol);
+                        return true;
+                    default:
+                        System.out.println("ERROR SINTACTICO "+"en línea " +nrol);
+                        break;
+       }   
        }    catch (IOException ex) {
                Logger.getLogger(TokenClass.class.getName()).log(Level.SEVERE, null, ex);
            }
@@ -469,7 +594,7 @@ public class TokenClass {
         {
             String [] palabras = cad.split(" ");
             
-            for(int z=0; z<=cad.length(); z++)
+            for(int z=0; z<=palabras.length; z++)
             {            
                 String part1 = palabras[z];
                 String part2 = palabras[z+1];
@@ -485,7 +610,7 @@ public class TokenClass {
         else if(cad.contains("="))
             {
                 String [] palabras = cad.split("=");
-                 for(int z=0; z<=cad.length(); z++)
+                 for(int z=0; z<=palabras.length; z++)
             {            
                 String part1 = palabras[z];
                 String part2 = palabras[z+1];
@@ -522,7 +647,7 @@ public class TokenClass {
         return false;
     }
     
-    public static boolean Numeros(char n,String num, BufferedWriter fw1, int nrol) 
+    public static boolean Numeros(char n, String num, BufferedWriter fw1, int nrol) 
     {
         try
         {//System.out.println(num+"b"+num.length()+num.charAt(1));
@@ -570,7 +695,7 @@ public class TokenClass {
                         {
                             if(Character.isLetter(num.charAt(y)))
                             {
-                            System.out.println(" ERROR LÉXICO en línea " +nrol);
+                            System.out.println("ERROR LÉXICO en línea " +nrol);
                             y++;
                             break;
                             }
@@ -600,6 +725,43 @@ public static void Concatenar(String cad, BufferedWriter fw1)
         }
 }
 
+ public static boolean Identificador (String cad, BufferedWriter fw1, int nrol)
+    {
+        String part1="";
+        try
+        {
+            System.out.println(cad.length()+"");
+            
+            if (cad.contains(" "))
+            {
+                String [] palabras = cad.split(" ");
+//            System.out.println(palabras.length+"");
+                
+                for (int z=0; z<palabras.length; z++) {
+                    part1 = palabras[z];
+//                    System.out.println("" +part1);
+                    if(part1.equals("int:")|| part1.equals("float:")|| part1.equals("string:")||part1.equals("bool:")||part1.equals("char:") )
+                    {
+                        System.out.println("Tipo de dato, " +part1);
+                        fw1.write("Tipodedato, " + part1    );
+                        fw1.newLine();
+                        fw1.flush();
+                    }else if(evaluarCaracter(part1.charAt(0), fw1)){}
+                    else if (Numeros(part1.charAt(0), part1, fw1, nrol)){}
+                    else{if (Character.isLetter(part1.charAt(0))) {Letra(part1.charAt(0), part1, fw1, nrol);}}
+                   
+                }
+                
+//                if(evaluarCaracter(part1.charAt(0), fw1)){/*System.out.println(part1+"");*/}
+            }
+
+        
+         }catch (IOException ex) {
+                                    Logger.getLogger(TokenClass.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+
+     return false;   
+    }
 }
 
 
