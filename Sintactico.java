@@ -1,16 +1,17 @@
-
+/*Esteban Díaz, Carlos Osorio*/
 package Syntax;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.StringTokenizer;
  
 public class Sintactico {
 
-    HashTables ht=new HashTables();
+    Tables ht=new Tables();
     Hashtable c1=new Hashtable();
-    Hashtable c2=new Hashtable();
+    ArrayList c2=new ArrayList();
     
     public Sintactico(){ 
         
@@ -31,36 +32,38 @@ public class Sintactico {
             }
         }catch (IOException e){{}}
         
-         System.out.println("Claves: " +c1.toString());
-         System.out.println("Claves: " +c2.toString());
-//         ht.comparar(c1,c2);
-         
+        int numero=NroL-3;
+        
+        System.out.println("Claves: " +c1.toString()+numero);
+        ht.comparar(c1,numero);
+        ht.comprobar(c2,numero);
+//         System.out.println("Claves: " +c1.toString());
+        
     }
     
     public void id(String part, int NumeroLineas) throws IOException {
         
         StringTokenizer st=new StringTokenizer(part);
-      
-        
 //        System.out.println(NumeroLineas+"");
         if (part.contains(" "))
         {         
                 String part1=st.nextToken();
 //                System.out.println(part1+"");
-                
-                
-                if(NumeroLineas>3)
-                {
-                    c2.put(NumeroLineas, part1);
-                }
-                else
-                {
                     c1.put(NumeroLineas, part1);
-                }
+                
 //                Enumeration<String> enu = c1.elements();
 //                Enumeration llaves = c1.keys();
 //                while (enu.hasMoreElements() &&llaves.hasMoreElements()) {
 //                System.out.println("k: " + llaves.nextElement()+" v: " + enu.nextElement()); 
+                
+                    String part2=st.nextToken();
+//                System.out.println(part2+"_");
+                
+                
+                
+                c2.add(part2);
+               
+               
                        
         }
  
@@ -68,24 +71,8 @@ public class Sintactico {
 }
 
     public void Sep(String linea, int NumeroLineas) {
-        
-        
-                
-                
-//                String part2=st.nextToken();
-////                System.out.println(part2+"_");
+
 //                
-//                String cad2 = String.valueOf(NumeroLineas);
-//                Hashtable<String,String> c2=new Hashtable<>();
-//                c2.put(cad2, part2);
-//               
-//               Enumeration<String> enumeration2 = c2.elements();
-//                while (enumeration2.hasMoreElements()) {
-//                    System.out.println(""+"v2 " + enumeration2.nextElement());}
-//                
-//                Enumeration<String> llaves2 = c2.keys();
-//                while (llaves2.hasMoreElements()) {
-//                    System.out.println(""+"k2 " + llaves2.nextElement());}
 //            String [] palabras = linea.split(" ");
 ////            System.out.println(palabras.length+"#");
 //            System.out.println(st.countTokens());
@@ -102,6 +89,12 @@ public class Sintactico {
 
 
 }
+                
+      
+        
+    
+
+
 
 
 
