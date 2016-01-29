@@ -26,6 +26,7 @@ public class LecturaLexema {
                     if(Character.isDigit(t))
                     {
                         Numeros(t, cad, fw1, NumeroLineas);
+//                        System.out.println(NumeroLineas);
                         break;
                     }
                     
@@ -35,12 +36,14 @@ public class LecturaLexema {
                        {
                            if(Character.isLetter(cad.charAt(1)))
                            {
-                               
+//                               System.out.println(NumeroLineas);
                                Identificador(cad, fw1, NumeroLineas);
+                              
                                break;
                            }
                            else
                            {
+//                               System.out.println(NumeroLineas);
                                Especial(t,cad.charAt(i), cad, fw1, NumeroLineas);
                                break;
                            }
@@ -48,13 +51,17 @@ public class LecturaLexema {
                        else if (Character.isLetter(cad.charAt(0))==false)
                        {
                           
+//                          System.out.println(NumeroLineas);
                           Especial(t,cad.charAt(i), cad, fw1, NumeroLineas);
+                          
                           break;
                        }
                     }
                     if(Character.isLetter(cad.charAt(0)))
                     {
+//                        System.out.println(NumeroLineas);
                         Identificador(cad, fw1, NumeroLineas);
+                        
                         break;
                     }
                 }  
