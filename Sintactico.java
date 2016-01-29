@@ -1,73 +1,106 @@
 
 package Syntax;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
+import java.util.Enumeration;
+import java.util.Hashtable;
 import java.util.StringTokenizer;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
  
 public class Sintactico {
 
-    int NumeroLineas=1;
+    HashTables ht=new HashTables();
+    Hashtable c1=new Hashtable();
+    Hashtable c2=new Hashtable();
     
-    
-    public Sintactico(String part1, String part2) throws IOException {
-
-
+    public Sintactico(){ 
+        
+        File f = new File( "D:\\salida.csv" );
+        int NroL=1;
+        
+        BufferedReader entrada;
         try {
-             BufferedReader br = new BufferedReader( new FileReader("D:\\salida.csv"));
-             String line;
-           
-            line = br.readLine();
-//            System.out.println(part1+"__"+part2+"__"+part3+"__"+part4);
-
-//            String no[]= {"Numero","Caracter especial","Operando Compuesto",
-//                "Literal","Identificador","Palabra reservada","OperadorUnario","Valorbooleano","Tipodedato"};
-            int i=0;
-            int tokenNumber=0;
             
-            while((line != null))
-            { 
-                StringTokenizer st = new StringTokenizer(line, ",");
+            entrada = new BufferedReader( new FileReader( f ) );
+            String linea;
+            while(entrada.ready()==true)
+            {
+                linea = entrada.readLine();
+//              System.out.println(linea+"-");
+                id(linea,NroL);
+                NroL++;
+            }
+        }catch (IOException e){{}}
+        
+         System.out.println("Claves: " +c1.toString());
+         System.out.println("Claves: " +c2.toString());
+//         ht.comparar(c1,c2);
+         
+    }
+    
+    public void id(String part, int NumeroLineas) throws IOException {
+        
+        StringTokenizer st=new StringTokenizer(part);
+      
+        
+//        System.out.println(NumeroLineas+"");
+        if (part.contains(" "))
+        {         
+                String part1=st.nextToken();
+//                System.out.println(part1+"");
                 
                 
-                if (st.countTokens()==2)
+                if(NumeroLineas>3)
                 {
-                    for(int z=0; z<=st.countTokens(); z++)
-                    {
-                        String part = st.nextToken(",");
-                        
-                        if(part.equals(part1))
-                        {
-                             System.out.println("Es declaración, en línea "+NumeroLineas+" : "+part1+" "+part2);
-                             break;
-                        }
-                        else
-                        {
-//                            System.out.println(st.countTokens());
-                            z++;
-                            break;
-                        }
-                    }
-                    break;
+                    c2.put(NumeroLineas, part1);
                 }
                 else
                 {
-//                    System.out.println(st.countTokens()+"");
-                    System.out.println("Error sintactico en línea "+NumeroLineas);  
-                    NumeroLineas++;
-                    break;
+                    c1.put(NumeroLineas, part1);
                 }
-  
-            }
-        }catch (FileNotFoundException ex) {
-            Logger.getLogger(Sintactico.class.getName()).log(Level.SEVERE, null, ex);
+//                Enumeration<String> enu = c1.elements();
+//                Enumeration llaves = c1.keys();
+//                while (enu.hasMoreElements() &&llaves.hasMoreElements()) {
+//                System.out.println("k: " + llaves.nextElement()+" v: " + enu.nextElement()); 
+                       
         }
-  }
+ 
+        
+}
+
+    public void Sep(String linea, int NumeroLineas) {
+        
+        
+                
+                
+//                String part2=st.nextToken();
+////                System.out.println(part2+"_");
+//                
+//                String cad2 = String.valueOf(NumeroLineas);
+//                Hashtable<String,String> c2=new Hashtable<>();
+//                c2.put(cad2, part2);
+//               
+//               Enumeration<String> enumeration2 = c2.elements();
+//                while (enumeration2.hasMoreElements()) {
+//                    System.out.println(""+"v2 " + enumeration2.nextElement());}
+//                
+//                Enumeration<String> llaves2 = c2.keys();
+//                while (llaves2.hasMoreElements()) {
+//                    System.out.println(""+"k2 " + llaves2.nextElement());}
+//            String [] palabras = linea.split(" ");
+////            System.out.println(palabras.length+"#");
+//            System.out.println(st.countTokens());
+//            
+//            
+//                for (int z=0; z<palabras.length; z++) {
+//                String part1 = palabras[z];
+////                System.out.println(part1+"_");
+//                
+//                
+//                
+            
+                }
+
+
 }
 
 
