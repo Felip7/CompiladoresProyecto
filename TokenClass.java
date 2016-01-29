@@ -100,7 +100,7 @@ public static void Concatenar(String cad, BufferedWriter fw1)
 public static boolean Especial(char t, char n, String cad, BufferedWriter fw1, int NroL)
 { 
     if(!Character.isLetterOrDigit(cad.charAt(0))){
-////       System.out.println(cad.length()+"*"+cad);
+//       System.out.println(cad.length()+"*"+cad);
        
        switch(cad.length())
        {
@@ -148,7 +148,8 @@ public static boolean operandoB(char n, String cad, BufferedWriter fw1, int NroL
         return false;
    }
 
-public static boolean CaracterEsp(char c, BufferedWriter fw1, int NumeroLineas) {
+public static boolean CaracterEsp(char c, BufferedWriter fw1, int NumeroLineas) 
+{
         
         try
         {
@@ -161,8 +162,8 @@ public static boolean CaracterEsp(char c, BufferedWriter fw1, int NumeroLineas) 
                 return true;
                 
             case ',':
-                                    System.out.println("Caracter especial, " + c);
-                                    fw1.write("Caracterespecial, " + c    );
+                                    System.out.println("Coma, " + c);
+                                    fw1.write("Coma, " + c    );
                                     fw1.newLine();
                                     fw1.flush();
                 return true;
@@ -192,7 +193,7 @@ public static boolean CaracterEsp(char c, BufferedWriter fw1, int NumeroLineas) 
                 return true;
             case '{':
                 System.out.println("Caracter especial, " + c);
-                                    fw1.write("Caracterespecial, " + c    );
+                                    fw1.write("InicioFuncion, " + c    );
                                     fw1.newLine();
                                     fw1.flush();
                 return true;
@@ -210,7 +211,7 @@ public static boolean CaracterEsp(char c, BufferedWriter fw1, int NumeroLineas) 
                 return true;
             case '*':
                 System.out.println("Operador unario, " + c);
-                                    fw1.write("Operadorunario, " + c    );
+                                    fw1.write("Operadorunar1o, " + c    );
                                     fw1.newLine();
                                     fw1.flush();
                 return true;
@@ -222,19 +223,19 @@ public static boolean CaracterEsp(char c, BufferedWriter fw1, int NumeroLineas) 
                 return true;
             case '+':
                 System.out.println("Operador unario, " + c);
-                                    fw1.write("Operadorunario, " + c );
+                                    fw1.write("Operadorunar1o, " + c );
                                     fw1.newLine();
                                     fw1.flush();
                 return true;
             case '-':
                 System.out.println("Operador unario, " + c);
-                                    fw1.write("Operadorunario, " + c);
+                                    fw1.write("Operadorunar1o, " + c);
                                     fw1.newLine();
                                     fw1.flush();
                 return true;
             case '/':
                 System.out.println("Operador unario, " + c);
-                                    fw1.write("Operadorunario, " + c );
+                                    fw1.write("Operadorunar1o, " + c );
                                     fw1.newLine();
                                     fw1.flush();
                 return true;
@@ -246,7 +247,7 @@ public static boolean CaracterEsp(char c, BufferedWriter fw1, int NumeroLineas) 
                 return true;
             case '}':
                 System.out.println("Caracter especial, " + c);
-                                    fw1.write("Caracterespecial, " + c    );
+                                    fw1.write("TerminadorFuncion, " + c    );
                                     fw1.newLine();
                                     fw1.flush();
                 return true;
@@ -264,7 +265,7 @@ public static boolean CaracterEsp(char c, BufferedWriter fw1, int NumeroLineas) 
                 return true;
             case '=':
                 System.out.println("Operador unario, " + c);
-                                    fw1.write("Operadorunario, " + c    );
+                                    fw1.write("Operadorasignacion, " + c    );
                                     fw1.newLine();
                                     fw1.flush();
                 return true;
@@ -303,12 +304,12 @@ public static boolean operadores(String c, BufferedWriter fw1)
                 return true;
             case "==":
                 System.out.println("Operador binario, " + c);
-                                    fw1.write("Operadorbinario, " + c    );
+                                    fw1.write("Operadorb1nario, " + c    );
                                     fw1.newLine();
                                     fw1.flush();
                 return true;
             case "!=":
-                System.out.println("Operador binario: " + c);
+                System.out.println("Op3rador binario: " + c);
                                     fw1.write("Operadorbinario, " + c    );
                                     fw1.newLine();
                                     fw1.flush();
@@ -327,7 +328,7 @@ public static boolean operadores(String c, BufferedWriter fw1)
                 return true;
             case "++":
                 System.out.println("Operador binario: " + c);
-                                    fw1.write("Operadorbinario, " + c    );
+                                    fw1.write("Operadorbinar1o, " + c    );
                                     fw1.newLine();
                                     fw1.flush();
                 return true;
@@ -399,31 +400,31 @@ public static boolean palabraReservada(String cad, BufferedWriter fw1, int nrol)
             
             case "if":
                  System.out.println("Palabra reservada, "+cad);
-                                    fw1.write("Palabrareservada, "+cad   );
+                                    fw1.write("Palabrareservadaf, "+cad   );
                                     fw1.newLine();
                                     fw1.flush();
                                     return true;
             case "then":
                  System.out.println("Palabra reservada, "+cad);
-                                    fw1.write("Palabrareservada, "+cad   );
+                                    fw1.write("Palabrareservadag, "+cad   );
                                     fw1.newLine();
                                     fw1.flush();
                 return true;
             case "else":
                  System.out.println("Palabra reservada, "+cad);
-                                    fw1.write("Palabrareservada, "+cad   );
+                                    fw1.write("Palabrareservadat, "+cad   );
                                     fw1.newLine();
                                     fw1.flush();
                 return true;
             case "while":
                  System.out.println("Palabra reservada, "+cad);
-                                    fw1.write("Palabrareservada, "+cad   );
+                                    fw1.write("Palabrareservada1, "+cad   );
                                     fw1.newLine();
                                     fw1.flush();
                 return true;
             case "do":
                  System.out.println("Palabra reservada, "+cad);
-                                    fw1.write("Palabrareservada, "+cad   );
+                                    fw1.write("Palabrareservada2, "+cad   );
                                     fw1.newLine();
                                     fw1.flush();
                 return true;
@@ -484,6 +485,7 @@ public static boolean palabraReservada(String cad, BufferedWriter fw1, int nrol)
 public static boolean vectores(String c, BufferedWriter fw1, int nrol)
 {
     try{
+//        System.out.println(c+"j");
         switch (c) {
             case "[]:":
                 //Inicializar vectores vacíos
@@ -553,9 +555,10 @@ public static boolean vectores(String c, BufferedWriter fw1, int nrol)
                                     fw1.newLine();
                                     fw1.flush();
                 return true;    
-//             default:
-//                 System.out.println("Valor entre corchetes no admitido. ERROR SINTACTICO en línea " + nrol);
-//                 return false;
+             default:
+                 
+                 Especial(c.charAt(0), c.charAt(0), c, fw1, nrol);
+                 return false;
         }}catch (IOException ex) {
                                     Logger.getLogger(TokenClass.class.getName()).log(Level.SEVERE, null, ex);
                                 }
@@ -574,22 +577,15 @@ public static boolean Identificador (String cad, BufferedWriter fw1, int nrol) t
                 part1 = palabras[z];
 //                System.out.println("_" +part1);
                 if(funcion(part1, fw1, nrol)){}
-                else if (vectores(part1, fw1, nrol)){}
-                else if (Especial(part1.charAt(0), part1.charAt(0), part1, fw1, nrol)){}
-//                else if(vectores(cad, fw1, nrol)){}
-//                else if(Especial(cad.charAt(0), cad.charAt(1), cad, fw1, nrol)){}
+                else if(Especial(part1.charAt(0), part1.charAt(0), part1, fw1, nrol)){}
             }
-
         }
         else
         {
 //            System.out.println("ve");
             if(funcion(cad, fw1, nrol)){}
-            else if (vectores(cad, fw1, nrol)){}
-            else if (Especial(cad.charAt(0), cad.charAt(cad.length()-1), cad, fw1, nrol)){}
-            
+            else if(Especial(cad.charAt(0), cad.charAt(0), cad, fw1, nrol)){}
         }
-
      return false;   
     }
 
@@ -602,18 +598,18 @@ public static boolean Letra(String cad, BufferedWriter fw1, int nrol) throws IOE
                 {
                     case 1:
                         if(Character.isLetter(cad.charAt(0))){
-                            id(cad, fw1);
+                            id(cad, fw1,nrol);
                         return true;
                         }
                     case 2:
                         if(Character.isLetter(cad.charAt(cad.length()-1))==true)
                         {   
-                            id(cad, fw1);
+                            id(cad, fw1,nrol);
                               return true;
                         }
                         else if(Character.isDigit(cad.charAt(cad.length()-1)))
                         {
-                           id(cad, fw1);
+                           id(cad, fw1,nrol);
                              return true;
                         }
                         else if(Character.isLetterOrDigit(cad.charAt(cad.length()-1))==false)
@@ -632,22 +628,23 @@ public static boolean Letra(String cad, BufferedWriter fw1, int nrol) throws IOE
                             {
                                 System.out.println("4ERROR LÉXICO "+"en línea " +nrol);
                             }
-                            else {id(cad, fw1);}
+                            else {id(cad, fw1,nrol);}
                         }                    
                         return true;
            }
            
-           if (cad.length()>=4)        
+           if (cad.length()>=4&&Character.isLetter(cad.charAt(0)))        
                 {    
+//                    System.out.println(cad+">");
                     int x=0;
                     while(x!=cad.length()){
                        if (Character.isLetter(cad.charAt(x)))
                             {
-//                                System.out.println(cad.charAt(x)+" "+x);
+                                System.out.println(cad.charAt(x)+" "+x);
                                 x++;
                                 if(x==cad.length())
                                 {
-                                    id(cad, fw1);
+                                    id(cad, fw1,nrol);
                                 }
                             }
                        else
@@ -656,30 +653,46 @@ public static boolean Letra(String cad, BufferedWriter fw1, int nrol) throws IOE
                                 break;
                             }
                     }   
-                }}catch (IOException ex) {
+                }
+           else
+           {
+               vectores(cad, fw1, nrol);
+           }
+       }catch (IOException ex) {
                Logger.getLogger(TokenClass.class.getName()).log(Level.SEVERE, null, ex);
            }
        return false;
    }
 
-public static void id(String cad, BufferedWriter fw1) throws IOException
+public static void id(String cad, BufferedWriter fw1,int nrol) throws IOException
 {
         try {
-            if(cad.length()==1){
+            if(cad.length()==1 && Character.isLetter(cad.charAt(0))){
             System.out.println("Identificador, "+cad.charAt(0));
             fw1.write("Identificador, "+ cad.charAt(0));
             fw1.newLine();
             fw1.flush();}
-            else
+            else if(cad.length()>1 && Character.isLetter(cad.charAt(0)))
             {
                 System.out.println("Identificador, "+cad);
             fw1.write("Identificador, "+ cad);
             fw1.newLine();
-            fw1.flush();}
+            fw1.flush();
+            }
+            else if(Character.isDigit(cad.charAt(0)))
+            {
+                Numeros(cad.charAt(0), cad, fw1, nrol);
+            }
+            else
+            {
+                System.out.println("Se esperaba un identificador en línea "+nrol);
+            }
             
         } catch (IOException ex) {
             Logger.getLogger(TokenClass.class.getName()).log(Level.SEVERE, null, ex);
         }
 }
+
+
 
 }
