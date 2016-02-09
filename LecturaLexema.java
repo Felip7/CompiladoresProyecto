@@ -1,12 +1,14 @@
-package App;
+/*Esteban Díaz, Carlos Osorio*/
+package Lex;
 
+import Control.Etapas;
 import java.io.*;
 import java.util.logging.*;
-import static App.TokenClass.*;
+import static Lex.TokenClass.*;
 
 public class LecturaLexema {
 
-    public void leerarchivo(String bufferIn, DataInputStream in, BufferedWriter fw1, BufferedReader bf) throws IOException {
+public void leerarchivo(String bufferIn, DataInputStream in, BufferedWriter fw1, BufferedReader bf, int lineas) throws IOException {
         
         int NumeroLineas=1;
         try
@@ -36,15 +38,15 @@ public class LecturaLexema {
                        {
                            if(Character.isLetter(cad.charAt(1)))
                            {
-//                               System.out.println(NumeroLineas);
+                               
                                Identificador(cad, fw1, NumeroLineas);
                               
                                break;
                            }
                            else
                            {
-//                               System.out.println(NumeroLineas);
-                               Especial(t,cad.charAt(i), cad, fw1, NumeroLineas);
+//                               System.out.println("kk"+NumeroLineas);
+                               Especial(t,cad, fw1, NumeroLineas);
                                break;
                            }
                        }
@@ -52,7 +54,7 @@ public class LecturaLexema {
                        {
                           
 //                          System.out.println(NumeroLineas);
-                          Especial(t,cad.charAt(i), cad, fw1, NumeroLineas);
+                          Especial(t, cad, fw1, NumeroLineas);
                           
                           break;
                        }
@@ -63,16 +65,18 @@ public class LecturaLexema {
                         Identificador(cad, fw1, NumeroLineas);
                         
                         break;
-                    }
-                }  
+                    }}
                 i++;  
                 NumeroLineas++;
+                
+                Etapas et=new Etapas();
+                et.recuperar(NumeroLineas);
                 }
 //              NumeroLineas++;
-   
-        } catch (IOException ex) {
+        }catch (IOException ex) {
             Logger.getLogger(LecturaLexema.class.getName()).log(Level.SEVERE, null, ex);
         }
+       
     }
     
 }
