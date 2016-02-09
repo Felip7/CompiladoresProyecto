@@ -2,99 +2,44 @@
 package Syntax;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.Hashtable;
-import java.util.StringTokenizer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
  
-public class Sintactico {
+public final class Sintactico {
 
-    Tables ht=new Tables();
-    Hashtable c1=new Hashtable();
-    ArrayList c2=new ArrayList();
-    
-    public Sintactico(){ 
+public  BufferedWriter bw1;
         
-        File f = new File( "D:\\salida.csv" );
-        int NroL=1;
-        
-        BufferedReader entrada;
-        try {
+public Sintactico(int lineas1){ 
+         
+        System.out.println("\nSINTACTICO");
+        File archivo = new File("D:\\simbolos.txt");
             
-            entrada = new BufferedReader( new FileReader( f ) );
-            String linea;
-            while(entrada.ready()==true)
+            try 
             {
-                linea = entrada.readLine();
-//              System.out.println(linea+"-");
-                id(linea,NroL);
-                NroL++;
-            }
-        }catch (IOException e){{}}
+                bw1 = new BufferedWriter(new FileWriter(archivo, false));
+            } catch(Exception e) {
+           System.out.println("Error de escritura del fichero");
+           System.out.println(e.getMessage());
+        }
         
-        int numero=NroL-3;
-        
-        System.out.println("Claves: " +c1.toString()+numero);
-        ht.comparar(c1,numero);
-        ht.comprobar(c2,numero);
-//         System.out.println("Claves: " +c1.toString());
-        
+        archivo("D:\\salida.csv", bw1, lineas1);
     }
     
-    public void id(String part, int NumeroLineas) throws IOException {
-        
-        StringTokenizer st=new StringTokenizer(part);
-//        System.out.println(NumeroLineas+"");
-        if (part.contains(" "))
-        {         
-                String part1=st.nextToken();
-//                System.out.println(part1+"");
-                    c1.put(NumeroLineas, part1);
-                
-//                Enumeration<String> enu = c1.elements();
-//                Enumeration llaves = c1.keys();
-//                while (enu.hasMoreElements() &&llaves.hasMoreElements()) {
-//                System.out.println("k: " + llaves.nextElement()+" v: " + enu.nextElement()); 
-                
-                    String part2=st.nextToken();
-//                System.out.println(part2+"_");
-                
-                
-                
-                c2.add(part2);
-               
-               
-                       
-        }
- 
-        
-}
+public void archivo(String rutaArchivo, BufferedWriter bw1, int lineas1)
+{
+        String bufferIn = "";
+        try
+        {
+            DataInputStream in=new DataInputStream(new FileInputStream(rutaArchivo));
 
-    public void Sep(String linea, int NumeroLineas) {
-
-//                
-//            String [] palabras = linea.split(" ");
-////            System.out.println(palabras.length+"#");
-//            System.out.println(st.countTokens());
-//            
-//            
-//                for (int z=0; z<palabras.length; z++) {
-//                String part1 = palabras[z];
-////                System.out.println(part1+"_");
-//                
-//                
-//                
+            FileReader fr1 = new FileReader("D:\\salida.csv");
+            BufferedReader br = new BufferedReader(fr1);
             
-                }
-
-
-}
-                
-      
+            leerCSV csv=new leerCSV(lineas1,bufferIn, in, bw1, br);
         
-    
-
-
-
-
-
+            
+        } catch (IOException ex) {
+        Logger.getLogger(Sintactico.class.getName()).log(Level.SEVERE, null, ex);
+        }
+}
+}
