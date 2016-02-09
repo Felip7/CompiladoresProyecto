@@ -1,34 +1,26 @@
 /*Autores: Esteban Diaz, Carlos Osorio*/
-package App;
+package Lex;
 
-
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.DataInputStream;
-import java.io.FileInputStream;
-import java.io.FileReader;
-
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.io.*;
+import java.util.logging.*;
 
 public class Léxico{
 
-    public Léxico(String f, BufferedWriter bw1){
+    public Léxico(String f, BufferedWriter bw1, int lineas){
 
         String bufferIn = "";
-        try{
+        try
+        {
             DataInputStream in=new DataInputStream(new FileInputStream(f));
-            
             FileReader fr = new FileReader("D:\\entrada.txt");
             BufferedReader bf = new BufferedReader(fr);
-            //leemos nuestro archivo de entrada 
             
-                LecturaLexema lx=new LecturaLexema();
-                lx.leerarchivo(bufferIn, in, bw1, bf);
+            LecturaLexema lx=new LecturaLexema();
+            lx.leerarchivo(bufferIn, in, bw1, bf, lineas);
                      
-            } catch (IOException ex) {
-            Logger.getLogger(Léxico.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+        Logger.getLogger(Léxico.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }
+
