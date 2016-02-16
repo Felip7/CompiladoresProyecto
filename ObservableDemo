@@ -1,0 +1,42 @@
+package Syntax;
+
+import java.util.Observable;
+import java.util.Observer;
+
+public class ObservableDemo implements Observer {
+   public String name;
+   
+   public ObservableDemo(String name) {
+   this.name = name;
+   }
+
+//   // create watched and watcher objects
+//   ObservedObject watched = new ObservedObject("1");
+//   // watcher object listens to object change
+//   ObservableDemo watcher = new ObservableDemo("Watcher");
+//   // add observer to the watched object
+//   watched.addObserver(watcher);
+   public void cambio(ObservedObject watched, String part1)
+   {
+   // trigger value change
+//   System.out.println("setValue method called...");
+       int linea=Integer.valueOf(part1);
+       watched.setValue(linea);
+       
+   // check if value has changed
+   if(watched.hasChanged())
+       System.out.println("Value changed");
+   else
+       System.out.println("Value not changed");
+   }
+   
+    /**
+     *
+     * @param obj
+     * @param arg
+     */
+    @Override
+   public void update(Observable obj, Object arg) {
+   System.out.println("Update called");
+   }
+}
