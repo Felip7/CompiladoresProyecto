@@ -1,0 +1,119 @@
+package Syntax;
+
+public class Estructura {
+    
+    public Estructura(String part1)
+    {
+        if(part1.equals("int")|| part1.equals("float")|| part1.equals("string")
+                            ||part1.equals("bool")||part1.equals("char") || part1.equals("int:")
+                            || part1.equals("float:")|| part1.equals("string:")
+                            ||part1.equals("bool:")||part1.equals("char:")|| part1.equals(":int:")
+                            || part1.equals(":float:")|| part1.equals(":string:")
+                            ||part1.equals(":bool:")||part1.equals(":char:")||part1.equals(":void:"))
+        {
+//            System.out.println("simon");
+        }
+        else{
+            abecedario(part1);
+        }
+                        
+    }
+
+    Estructura() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    public boolean abecedario(String cad)
+    {
+        if(cad.length()==1 && Character.isLetter(cad.charAt(0))){
+//            System.out.println("Identificador");
+            return true;
+        }
+            else if(cad.length()>1 && Character.isLetter(cad.charAt(0)))
+            {
+//               System.out.println("Identificador");
+            return true;
+            
+            }
+            else if(Character.isDigit(cad.charAt(0)))
+            {
+                Numero(cad);
+                return false;
+            }
+           return false;
+    }
+    
+    public boolean Numero(String num)
+    {
+         switch(num.length())
+                {
+                    case 1:
+                        if(Character.isDigit(num.charAt(0)))
+                        {
+//                            System.out.println(" Número, "+num);
+                            
+                        }
+                    return true;
+             
+                    case 2: 
+                        if(Character.isDigit(num.charAt(1)) && Character.isLetter(num.charAt(0))){
+                            Concatenar(num); 
+                            return true;}
+                        else if(Character.isLetter(num.charAt(1)) && Character.isDigit(num.charAt(0))){
+//                            System.out.println(num+" es ERROR LÉXICO "+"en línea " +nrol);
+                            return false;}
+                        else{
+//                            System.out.println(" Número, "+num);
+                            
+                            return true;
+                        }
+
+                    case 3:
+                        if(Character.isDigit(num.charAt(2)) && Character.isLetter(num.charAt(1)))
+                        {
+//                            System.out.println(num+" es ERROR LÉXICO en línea " +nrol);
+                        return false;}
+                        else if(Character.isLetter(num.charAt(2)))
+                        {
+//                            System.out.println(num+" es ERROR LÉXICO en línea " +nrol);
+                        return false;}
+                        else if(Character.isDigit(num.charAt(0)) && Character.isLetter(num.charAt(1)))
+                        {
+//                            System.out.println(num+" es ERROR LÉXICO en línea " +nrol);
+                        return false;}
+                        else {{
+//                            System.out.println(nrol+" Número, "+num);
+                           
+                            return true;
+                        }}
+                                                                   
+                    case 4:  
+                        Concatenar(num);
+                        return true;
+                }    
+                    
+                if (num.length()>=5)        
+                {    
+                        for(int y=1;y<num.length();y++)
+                        {
+                            if(Character.isLetter(num.charAt(y)))
+                            {
+//                                System.out.println("ERR1OR LÉXICO en línea " +nrol);
+                            y++;}
+                        }        
+                }
+        return false;
+    }
+    
+    public static void Concatenar(String cad)
+{
+        
+            String concat="";
+            int longitud=cad.length();
+            for(int x=0; x<longitud; x++)
+            {concat+=cad.charAt(x);}
+//            System.out.println(" Número, "+concat);
+            
+        
+}
+}
