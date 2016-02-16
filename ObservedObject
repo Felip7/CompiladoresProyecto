@@ -1,0 +1,23 @@
+package Syntax;
+
+import java.util.Observable;
+
+public class ObservedObject extends Observable {
+   
+    private int watchedValue;
+   
+   public ObservedObject(int value) {
+   watchedValue = value;
+   }
+   
+   public void setValue(int value) {
+   // if value has changed notify observers
+   if(watchedValue!=value) {
+   watchedValue = value;
+         
+   // mark as value changed
+   setChanged();
+   }
+      
+   }
+}
