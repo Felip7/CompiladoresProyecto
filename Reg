@@ -1,0 +1,99 @@
+package GenCod;
+
+import java.io.*;
+import java.util.StringTokenizer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class Reg {
+
+         String part2 = "", part3 = "", part4 = "", part5 = "", part6 = "", part7 = "";
+String r1;
+String r2;
+String r3;
+String c2;
+String c3;
+
+public Reg(int lineas1, String bufferIn, DataInputStream in, BufferedWriter bw1, BufferedReader br) {
+        
+    int NumeroLineas=1;
+    int lineaentrada=0;
+        try
+        {
+            while((bufferIn=in.readLine())!=null && br.readLine()!=null)
+            {
+                int i=0;
+                String cad=bufferIn.trim();
+                while(i<cad.length())
+                {
+                    StringTokenizer st=new StringTokenizer(cad);
+                        if(cad.contains(" "))
+                        {
+                            part2=st.nextToken();
+                            part3=st.nextToken();
+                            part4=st.nextToken();
+                            part5=st.nextToken();
+                            part6=st.nextToken();
+//                            part7=st.nextToken();
+                            
+                            System.out.println(part2+part3+part4+part5+part6);
+                        }
+                         break;
+                    
+                    
+                }
+                i++;  
+                NumeroLineas++;
+              }
+          
+        } catch (IOException ex) {
+            Logger.getLogger(Reg.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+    }
+        
+    
+
+public void ensmablador()
+{
+    
+    System.out.println("add "+r1+", "+r2+"->"+r3);
+    System.out.println("sub "+r1+", "+r2+"->"+r3);
+    System.out.println("mult "+r1+", "+r2+"->"+r3);
+    System.out.println("div "+r1+", "+r2+"->"+r3);
+    
+    System.out.println("addI "+r1+", "+c2+"->"+r3);
+    System.out.println("subI "+r1+", "+c2+"->"+r3);
+    System.out.println("rsubI "+r1+", "+c2+"->"+r3);
+    System.out.println("multI "+r1+", "+c2+"->"+r3);
+    System.out.println("divI "+r1+", "+c2+"->"+r3);
+    System.out.println("rdivI "+r1+", "+c2+"->"+r3);
+    
+    System.out.println("lshift "+r1+", "+r2+"->"+r3);
+    System.out.println("lshiftI "+r1+", "+c2+"->"+r3);
+    System.out.println("rshift "+r1+", "+r2+"->"+r3);
+    System.out.println("rshiftI "+r1+", "+c2+"->"+r3);
+    
+    System.out.println("and "+r1+", "+r2+"->"+r3);
+    System.out.println("andI "+r1+", "+c2+"->"+r3);
+    System.out.println("or "+r1+", "+r2+"->"+r3);
+    System.out.println("orI "+r1+", "+c2+"->"+r3);
+    System.out.println("xor "+r1+", "+r2+"->"+r3);
+    System.out.println("xorI "+r1+", "+c2+"->"+r3);
+    
+    System.out.println("load "+r1+", "+r2+"->"+r3);
+    System.out.println("loadrI "+r1+", "+c2+"->"+r3);
+    System.out.println("loadAI "+r1+", "+r2+"->"+r3);
+    System.out.println("loadA0 "+r1+", "+c2+"->"+r3);
+    
+    System.out.println("store "+r1+"->"+r2);
+    System.out.println("storeAI "+r1+"->"+r2+", "+c3);
+    System.out.println("storeA0 "+r1+"->"+r2+", "+r3);
+    
+    
+    
+}
+
+        
+    }
