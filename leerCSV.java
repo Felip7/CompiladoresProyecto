@@ -1,55 +1,38 @@
 /*Esteban Díaz, Carlos Osorio*/
+/*Esteban Díaz, Carlos Osorio*/
 package Syntax;
-
-import Semantics.Tables;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.DataInputStream;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.StringTokenizer;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.io.*;
+import java.util.*;
+import java.util.logging.*;
 
 public class leerCSV {
-    
-    ArrayList arreglo ;
-    
     //Estructura del lenguaje
     Tables ht=new Tables();
-    
     //Estructura del archivo de entrada
-    ArrayList c1=new ArrayList();
+    List<List<String>> c1=new ArrayList<>();
+    ArrayList h2=new ArrayList();
+    String part2 = "", part3 = "";
     
-    //lexemas almacenados
-    ArrayList c2=new ArrayList();
 
-  public leerCSV(int lineas1, String bufferIn, DataInputStream in, BufferedWriter fw1, BufferedReader br) throws IOException {
-      
+public leerCSV(int lineas1, String bufferIn, DataInputStream in, BufferedWriter fw1, BufferedReader br) throws IOException {
       lineas1=lineas1-1;
-      System.out.println(lineas1);
-     
-      
-     List<List<String>> stringArray = new ArrayList<List<String>>(lineas1);
+//      System.out.println(lineas1);
+     List<List<String>> stringArray = new ArrayList<>(lineas1);
      
       for (int i = 0; i < lineas1; i++) 
       {
-           stringArray.add(new ArrayList<String>());
+           stringArray.add(new ArrayList<>());
       }
-     
       usar(stringArray,bufferIn, in, fw1, br);
-
     }
   
 public void usar( List<List<String>> stringArray, String bufferIn, DataInputStream in, BufferedWriter fw1, BufferedReader br) throws IOException
 {
 //   System.out.println(stringArray.toString()+""+stringArray.size());
-    lsyn(stringArray,bufferIn, in, fw1, br);
+    syn(stringArray,bufferIn, in, fw1, br);
 }
 
-
-public void lsyn(List<List<String>> stringArray, String bufferIn, DataInputStream in, BufferedWriter fw1, BufferedReader br) throws IOException {
+public void syn(List<List<String>> stringArray, String bufferIn, DataInputStream in, BufferedWriter fw1, BufferedReader br) throws IOException {
     int NumeroLineas=1;
     int lineaentrada=0;
         try
@@ -58,24 +41,30 @@ public void lsyn(List<List<String>> stringArray, String bufferIn, DataInputStrea
             {
                 int i=0;
                 String cad=bufferIn.trim();
-
                 while(i<cad.length())
                 {
                     if(Character.isDigit(cad.charAt(0)))
                     {
-//                        System.out.println("ls"+NumeroLineas);
-                         id(stringArray,cad, fw1, lineaentrada);
+                        StringTokenizer st=new StringTokenizer(cad);
+                        if(cad.contains(" "))
+                        {
+                            part2=st.nextToken();
+                            part3=st.nextToken();
+                            c1=partir(stringArray, part2, part3, fw1);
+                            lineaentrada=lineastxt(part2);
+//                            System.out.println(stringArray.toString());
+                        }
                          break;
                     }
                     else
                     {
-                        System.err.println("Error en línea "+NumeroLineas+ "se esperaba el número de línea para el símbolo");
+                       System.err.println("Error en línea "+NumeroLineas+ " se esperaba un número en el archivo CSV.");
                     }    
                 }
                 i++;  
                 NumeroLineas++;
               }
-            
+            ht.estructura(c1,lineaentrada,fw1);
         } catch (IOException ex) {
             Logger.getLogger(leerCSV.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -83,162 +72,200 @@ public void lsyn(List<List<String>> stringArray, String bufferIn, DataInputStrea
         
     }
     
-    
-public void id(List<List<String>> stringArray, String cad, BufferedWriter fw1, int nrol) throws IOException {
-        
-        String part1;
-        String part2, part3, part4;    
-//            String [] palabras = cad.split(" ");
-//            System.out.println(palabras.length+"#");
-            
-//            for (int z=0; z<palabras.length; z++) 
-//            {
-//                part1 = palabras[z];
-//                System.out.println(z+"_" +part1);
-//                if(Character.isDefined(part1.charAt(0)))
-//                {
-                    StringTokenizer st=new StringTokenizer(cad);
-                    if(cad.contains(" "))
-                    {
-                     part2=st.nextToken();
-                     part3=st.nextToken();
-                     part4=st.nextToken();
-                     
-//                  System.out.println(part2+" "+part3+" "+part4);
-                  
+public List<List<String>> partir(List<List<String>> stringArray, String part2, String part3, BufferedWriter fw1) throws IOException {
+
                   if(Integer.valueOf(part2)==1)
                   {
                   stringArray.get(0).add(part3); 
-                  nrol=Integer.valueOf(part2);
-                  ht.comparar((ArrayList) stringArray.get(0), nrol);
+                  
+                  return stringArray;
                   }
                   if(Integer.valueOf(part2)==2)
                   {
                   stringArray.get(1).add(part3);
-                  nrol=Integer.valueOf(part2);
-                  ht.comparar((ArrayList) stringArray.get(1), nrol);
+                  
+                  return stringArray;
                   }
                   if(Integer.valueOf(part2)==3)
                   {
                   stringArray.get(2).add(part3);
-                  nrol=Integer.valueOf(part2);
-                  ht.comparar((ArrayList) stringArray.get(2), nrol);
+                   
+                  return stringArray;
                   }
                   if(Integer.valueOf(part2)==4)
                   {
                   stringArray.get(3).add(part3);
-                  nrol=Integer.valueOf(part2);
-                  ht.comparar((ArrayList) stringArray.get(3), nrol);
                   
+                  return stringArray;
                   }
                   if(Integer.valueOf(part2)==5)
                   {
                   stringArray.get(4).add(part3);
-                  nrol=Integer.valueOf(part2);
-                  ht.comparar((ArrayList) stringArray.get(4), nrol);
+                  
+                  return stringArray;
                   }
                   if(Integer.valueOf(part2)==6)
                   {
                   stringArray.get(5).add(part3);
-                  nrol=Integer.valueOf(part2);
-                  ht.comparar((ArrayList) stringArray.get(5), nrol);
+                  
+                  return stringArray;
                   }
                   if(Integer.valueOf(part2)==7)
                   {
                   stringArray.get(6).add(part3);
-                  nrol=Integer.valueOf(part2);
-                  ht.comparar((ArrayList) stringArray.get(6), nrol);
+                  
+                  return stringArray;
                   }
                   if(Integer.valueOf(part2)==8)
                   {
                   stringArray.get(7).add(part3);
-                  nrol=Integer.valueOf(part2);
-                  ht.comparar((ArrayList) stringArray.get(7), nrol);
+                  
+                  return stringArray;
                   }
                   if(Integer.valueOf(part2)==9)
                   {
                   stringArray.get(8).add(part3);
-                  nrol=Integer.valueOf(part2);
-                  ht.comparar((ArrayList) stringArray.get(8), nrol);
+                  
+                  return stringArray;
                   }
                   if(Integer.valueOf(part2)==10)
                   {
                   stringArray.get(9).add(part3);
-                  nrol=Integer.valueOf(part2);
-                  ht.comparar((ArrayList) stringArray.get(9), nrol);
+                  
+                  return stringArray;
                   }
                   if(Integer.valueOf(part2)==11)
                   {
                   stringArray.get(10).add(part3);
-                  nrol=Integer.valueOf(part2);
-                  ht.comparar((ArrayList) stringArray.get(10), nrol);
+                  
+                  return stringArray;
                   }
                   if(Integer.valueOf(part2)==12)
                   {
                   stringArray.get(11).add(part3);
-                  nrol=Integer.valueOf(part2);
-                  ht.comparar((ArrayList) stringArray.get(11), nrol);
+                  
+                  return stringArray;
                   }
                   if(Integer.valueOf(part2)==13)
                   {
                   stringArray.get(12).add(part3);
-                  nrol=Integer.valueOf(part2);
-                  ht.comparar((ArrayList) stringArray.get(12), nrol);
+                  
+                  return stringArray;
                   }
                   if(Integer.valueOf(part2)==14)
                   {
                   stringArray.get(13).add(part3);
-                  nrol=Integer.valueOf(part2);
-                  ht.comparar((ArrayList) stringArray.get(13), nrol);
+                  
+                  return stringArray;
                   }
                   if(Integer.valueOf(part2)==15)
                   {
                   stringArray.get(14).add(part3);
-                  nrol=Integer.valueOf(part2);
-                  ht.comparar((ArrayList) stringArray.get(14), nrol);
+                  
+                  return stringArray;
                   }
                   if(Integer.valueOf(part2)==16)
                   {
                   stringArray.get(15).add(part3);
-                  nrol=Integer.valueOf(part2);
-                  ht.comparar((ArrayList) stringArray.get(15), nrol);
+                  
+                  return stringArray;
                   }
                   if(Integer.valueOf(part2)==17)
                   {
                   stringArray.get(16).add(part3);
-                  nrol=Integer.valueOf(part2);
-                  ht.comparar((ArrayList) stringArray.get(16), nrol);
+                  
+                  return stringArray;
                   }
                   if(Integer.valueOf(part2)==18)
                   {
                   stringArray.get(17).add(part3);
-                  nrol=Integer.valueOf(part2);
-                  ht.comparar((ArrayList) stringArray.get(17), nrol);
+                  
+                  return stringArray;
                   }
                   if(Integer.valueOf(part2)==19)
                   {
                   stringArray.get(18).add(part3);
-                  nrol=Integer.valueOf(part2);
-                  ht.comparar((ArrayList) stringArray.get(18), nrol);
+                  
+                  return stringArray;
                   }
                   if(Integer.valueOf(part2)==20)
                   {
                   stringArray.get(19).add(part3);
-                  nrol=Integer.valueOf(part2);
-                  ht.comparar((ArrayList) stringArray.get(19), nrol);
+                  
+                  return stringArray;
                   }
+                  if(Integer.valueOf(part2)==21)
+                  {
+                  stringArray.get(20).add(part3);
                   
+                  return stringArray;
+                  }
+                  if(Integer.valueOf(part2)==22)
+                  {
+                  stringArray.get(21).add(part3);
                   
-//         System.out.println(stringArray.toString()+"");         
+                  return stringArray;
+                  }
+                  if(Integer.valueOf(part2)==23)
+                  {
+                  stringArray.get(22).add(part3);
                   
-                 
-                    }
-
+                  return stringArray;            
+                  }
+                  if(Integer.valueOf(part2)==24)
+                  {
+                  stringArray.get(23).add(part3);
+                  
+                  return stringArray;
+                  }
+                  if(Integer.valueOf(part2)==25)
+                  {
+                  stringArray.get(24).add(part3);
+                  
+                  return stringArray;
+                  }
+                  if(Integer.valueOf(part2)==26)
+                  {
+                  stringArray.get(25).add(part3);
+                  
+                  return stringArray;
+                  }
+                  if(Integer.valueOf(part2)==27)
+                  {
+                  stringArray.get(26).add(part3);
+                  
+                  return stringArray;
+                  }
+                  if(Integer.valueOf(part2)==28)
+                  {
+                  stringArray.get(27).add(part3);
+                  
+                  return stringArray;
+                  }
+                  if(Integer.valueOf(part2)==29)
+                  {
+                  stringArray.get(28).add(part3);
+                  
+                  return stringArray;
+                  }
+                  if(Integer.valueOf(part2)==30)
+                  {
+                  stringArray.get(29).add(part3);
+                  
+                  return stringArray;
+                  }
+                    
 ////                else if (part1.equals("Tipovalorretorno,")||part1.equals("Identificador,")||
 ////                    part1.equals("Caracterespecial,")||part1.equals("Tipodedato,")||
 ////                        part1.equals("Tipodedato,")|| part1.equals("Numero,"))
-                 
+        return null;
+        }
 
+public int lineastxt(String part2)
+{
+//    System.out.println(part2+"");
+     int nrol=Integer.valueOf(part2);
+     return nrol;
 }
-    
+
 }
