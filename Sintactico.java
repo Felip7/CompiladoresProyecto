@@ -41,5 +41,9 @@ public void archivo(String rutaArchivo, BufferedWriter bw1, int lineas1)
         } catch (IOException ex) {
         Logger.getLogger(Sintactico.class.getName()).log(Level.SEVERE, null, ex);
         }
+    
 }
+
+
 }
+  
