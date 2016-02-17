@@ -18,7 +18,7 @@ public  BufferedWriter bw1;
 public Semantico(int lineas1){ 
          
         System.out.println("\nSEMANTICO");
-        File archivo = new File("D:\\tipos.txt");
+        File archivo = new File("C:\\Users\\usuario\\Documents\\NetBeansProjects\\Pro3\\tipos.txt");
             
             try 
             {
@@ -47,3 +47,5 @@ public void archivo(String rutaArchivo, BufferedWriter bw1, int lineas1)
         }  
 }
 }
+    
+    
