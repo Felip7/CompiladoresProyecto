@@ -1,33 +1,24 @@
 /*Esteban Díaz, Carlos Osorio*/
 package Lex;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
+import java.io.*;
 
 public class CrearTexto {
     
-public  BufferedWriter bw;
+BufferedWriter bwriter;
     
-    public boolean creaArchivoTexto(String strRuta, String strNombreArchivo, int lineas) {
+    public boolean creaArchivoTexto(String Ruta, String NombreArchivo, int lineas) 
+    {
         
-        System.out.println("LÉXICO \n");
-//        try {
-            File archivo = new File(strRuta + strNombreArchivo + ".csv");
-            
+        File archivocsv = new File(Ruta + NombreArchivo + ".csv");
             try {
-                bw = new BufferedWriter(new FileWriter(archivo, false));
+                bwriter = new BufferedWriter(new FileWriter(archivocsv, false));
             } catch(Exception e) {
            System.out.println("Error de escritura del fichero");
            System.out.println(e.getMessage());
         }
-        
-            Léxico l = new Léxico("D:\\entrada.txt", bw, lineas);
+            Léxico l = new Léxico("D:\\entrada.txt", bwriter, lineas);
             
-//        } catch (Exception e) {
-//            System.out.println("Error al escribir: " + e.getMessage());
             return false;
-        }
-      
     }
-
+}
