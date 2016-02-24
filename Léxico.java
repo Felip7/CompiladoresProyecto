@@ -6,21 +6,20 @@ import java.util.logging.*;
 
 public class Léxico{
 
-    public Léxico(String f, BufferedWriter bw1, int lineas){
-
-        String bufferIn = "";
+    public Léxico(String f, BufferedWriter bwriter, int lineas)
+    {
+        String buffer = "";
         try
         {
             DataInputStream in=new DataInputStream(new FileInputStream(f));
-            FileReader fr = new FileReader("D:\\entrada.txt");
-            BufferedReader bf = new BufferedReader(fr);
+            FileReader freader = new FileReader("D:\\entrada.txt");
+            BufferedReader breader = new BufferedReader(freader);
             
             LecturaLexema lx=new LecturaLexema();
-            lx.leerarchivo(bufferIn, in, bw1, bf, lineas);
+            lx.leerarchivo(buffer, in, bwriter, breader, lineas);
                      
         } catch (IOException ex) {
         Logger.getLogger(Léxico.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }
-
