@@ -165,12 +165,19 @@ public final class Tables {
     cs6.add("Identificador,");
     cs6.add("Caracterespecial,");
    
-    
-    cs7.add("Numero,");
+//    
+//    cs7.add("Numero,");
+//    cs7.add("Operadorasignacion,");
+//    cs7.add("Numero,");         /* a = b + c */
+//    cs7.add("Caracterspecial,");
+//    cs7.add("Numero,");
+    cs7.add("Caracterespecial,");
+    cs7.add("Identificador,");
     cs7.add("Operadorasignacion,");
-    cs7.add("Numero,");         /* a = b ^ c */
-    cs7.add("Caracterspecial,");
-    cs7.add("Numero,");
+    cs7.add("Identificador,");
+    cs7.add("Operadorunar1o,");         /* a = b + c */
+    cs7.add("Identificador,");
+    cs7.add("Caracterespecial,");
     
         flujo1.add("Palabrareservadaf,"); //if (expresión) then declaraciones
         
@@ -621,6 +628,11 @@ public final class Tables {
        if(h.get(i).equals(cs6)){ linea=i+1;System.out.println("Atribución (comandosimple) en línea "+linea);
        fw1.write(linea+" Identificador "+ "Operadorasignacion "+"Identificador "
                + "Caracterspecial "+"Identificador "+"Atribucion(comandosimple)");
+       fw1.newLine();
+       fw1.flush();}
+       if(h.get(i).equals(cs7)){ linea=i+1;System.out.println("Atribución (comandosimple) en línea "+linea);
+       fw1.write(linea+" Identificador "+ "Operadorasignacion "+"Identificador "
+               + "Operadorunario "+"Identificador "+"Atribucion(comandosimple)");
        fw1.newLine();
        fw1.flush();}
     }
