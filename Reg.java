@@ -30,7 +30,7 @@ public void R( List<List<String>> stringArray, int lineas1, String bufferIn, Dat
                         nrol=Integer.valueOf(part2);
 
                         String last = cad.substring(cad.lastIndexOf(" ")+1);
-                        System.out.println(nrol+last+"");
+//                        System.out.println(nrol+last+"");
                         
                         if(cad.contains("AND"))
                         { 
@@ -48,14 +48,14 @@ public void R( List<List<String>> stringArray, int lineas1, String bufferIn, Dat
 
 public static String first(String input) {return input.split(" ")[0]; }
 
-public Reg(String[] st) {
-
-//    System.out.println(st.toString()+"");
-     String []reg= new String[st.length];
-     System.arraycopy(st, 0, reg, 0, st.length);
+public Reg(String[] var, String[] vect) {
+    
+//    System.out.println(Arrays.toString(var)+"\n"+Arrays.toString(vect));
+    String []reg= new String[var.length];
+    System.arraycopy(var, 0, reg, 0, var.length);
      
     //Remover nulos
-    List<String> list = new ArrayList<String>();
+    List<String> list = new ArrayList<>();
 
     for(String s : reg) {
        if(s != null && s.length() > 0) {
@@ -65,15 +65,14 @@ public Reg(String[] st) {
 
     reg = list.toArray(new String[list.size()]);
 
-//    System.out.println(reg.length+"");
     for (int i = 0; i < reg.length; i++) {
         String tempregister="r"+String.valueOf(i);
-        System.out.println(" store ->"+tempregister);
+        int e=i+1;
+        System.out.println(" store "+tempregister+ "-> r"+e);
     }
-    System.out.println(Arrays.toString(reg));
 }    
 
-public void Reg1(ArrayList st)
+public void Reg(ArrayList st)
 {
 //    for (int i = 0; i < st.size(); i++) {
 //           if(st.get(i).contains("DeclaracionGlobal")||st.get(i).contains("Declaracionlocal")||st.get(i).contains("Atribucion")
