@@ -5,21 +5,26 @@ import java.util.*;
 import java.util.logging.*;
 
 public class escribirTipos {
+    Gencod gc=new Gencod();
     String part2 = "", part3 = "", part4;
     String [] p;
+    String [] vec;
+    String [] veccod;
+    String vector;
+    String []reg;
     
     public escribirTipos( List<List<String>> stringArray2, int lineas1, String bufferIn, DataInputStream in, BufferedWriter bw1, BufferedReader br) throws IOException {
         lineas1 = lineas1 - 1;
         
-        int doblereg=lineas1+lineas1;
-        p=new String[doblereg];
+//        int doblereg=lineas1+lineas1;
+        p=new String[lineas1];
         
         List<List<String>> stringArray3 = new ArrayList<>(lineas1);
         for (int i = 0; i < lineas1; i++) { stringArray3.add(new ArrayList<>());}
         semantics(stringArray2,stringArray3, bufferIn, in, bw1, br);
     }
     
-    public void semantics(List<List<String>> sa, List<List<String>> stringArray, String bufferIn, 
+    public void semantics(List<List<String>> stringArra, List<List<String>> stringArray, String bufferIn, 
             DataInputStream in, BufferedWriter fw1, BufferedReader br) throws IOException {
     int NumeroLineas = 1;
     int nrol = 0;
@@ -48,7 +53,7 @@ public class escribirTipos {
                 NumeroLineas++;
             }
             
-            repeticion(sa, stringArray, nrol, fw1);
+            repeticion(stringArra, stringArray, nrol, fw1);
 
         } catch (IOException ex) {
             Logger.getLogger(escribirTipos.class.getName()).log(Level.SEVERE, null, ex);
@@ -94,31 +99,29 @@ public class escribirTipos {
 
     public void repeticion(List<List<String>> f,List<List<String>> g, int nrol, BufferedWriter fw1) throws IOException {
         int l = g.size() - 1;
-
-//        System.out.println(g.toString());
         for (int k = 0; k < l; k++) {
         for (int j = 1; j < g.size(); j++) {
-            
-                if (g.get(k).size() > 1 && g.get(j).size() > 1 && k != j) {
-                    if (g.get(k).get(1).equals("=") || g.get(j).get(1).equals(";")
-                        ||g.get(j).get(2).equals("(")||g.get(j).get(2).equals(")")
-                        ||g.get(k).get(1).equals("(") || g.get(j).get(1).equals(")")
-                        ||g.get(j).get(2).equals("=")||g.get(j).get(2).equals(";"))
-                    {}
-                    else if (g.get(k).get(1).equals(g.get(j).get(1))) {
+             
+                if (g.get(k).size() > 1 && g.get(j).size() > 1 && k != j) { 
+//                    System.out.println(g.get(k).get(1)+(g.get(j).get(1)));
+                    if (g.get(k).get(1).equals(g.get(j).get(1))) {
                         nrol = j + 1;
-                        System.out.println("Error semántico en línea " + nrol);
-//                        System.out.println(g.get(k).get(1)+(g.get(j).get(1)));
-                        break;
+                        System.out.println(g.get(k).get(1)+" --y-- "+g.get(j).get(1));
+                        System.out.println("Error semántico en línea " + j+" y en línea "+nrol); 
+//                        break;
                     }
                     else if (g.get(k).get(1).equals(g.get(j).get(2))) {
-                        System.out.println(g.get(k).get(1)+"     "+g.get(j).get(2)+"");
+                        System.out.println(g.get(k).get(1)+" --y-- "+g.get(j).get(2));
                         nrol = j + 1;
-                        System.out.println("Error semántico en línea: " + nrol);
-                      break;
+                        System.out.println("Error semántico en línea " + j+" y en línea "+nrol); 
+                        break;
                     }
-                }
-              }
+                    else if (g.get(k).get(1).equals("=") || g.get(j).get(1).equals(";")
+                        ||g.get(j).get(2).equals("(")||g.get(j).get(2).equals(")")
+                        ||g.get(k).get(1).equals("(") || g.get(j).get(1).equals(")")
+                        ||g.get(j).get(2).equals("=")||g.get(j).get(2).equals(";")){}                
+                } 
+              } break; 
             }
         System.out.println("Comprobación Finalizada\n");
         asignar(f, g, fw1);
@@ -126,8 +129,11 @@ public class escribirTipos {
     
     public void asignar(List<List<String>> f, List<List<String>> g, BufferedWriter fw1) throws IOException
     {
+        int i =0;
+        int e = 0;
+        String[] arr = new String[20];
         List<String> h = new ArrayList<>();
-        for (int i = 0; i < g.size(); i++) {
+        for (i = 0; i < g.size(); i++) {
             
         Set<String> quipu = new HashSet<>(g.get(i));
         h.addAll(g.get(i));
@@ -137,7 +143,7 @@ public class escribirTipos {
                 {
                     if (key.equals("int")||key.equals("=")||Character.isDigit(key.charAt(0))
                         ||key.equals(")")||key.equals("(") ||key.equals(";")||key.equals("{")   
-                        ||key.equals("+")){}     
+                        ||key.equals("+")||key.equals("float")){}     
                 }
             else
             {
@@ -145,16 +151,104 @@ public class escribirTipos {
                     ||key.equals(";")||key.equals("{")||key.equals("+")
                     ||key.equals("+")||key.equals("++")||key.equals("void")
                     ||key.equals(":void:")||key.equals("main")||key.equals("int")||key.equals("^")
-                    ||key.equals("}")||key.equals("if")||key.equals("then")
-                    ||key.equals("=")||key.equals("[0]:")||key.equals("[1]:")){}
+                    ||key.equals("}")||key.equals("if")||key.equals("then")||key.equals("float")||key.equals("output")
+                    ||key.equals("=")){}
+                else if(key.equals("[0]:")||key.equals("[1]:")||key.equals("[2]:")||key.equals("[3]:")||key.equals("[4]:")||key.equals("[5]:")
+                    ||key.equals("[6]:")||key.equals("[7]:")||key.equals("[8]:")||key.equals("[9]:"))
+                   {
+                       veccod=asignarVectores(g, i, key, fw1);
+                    }
                 else
-                {   p[i]=key; 
-//                    System.out.println(Arrays.toString(p)+""+p.length);
-                }  
+                { 
+                    p[i]=key;
+                    //Remover nulos
+                    reg= new String[p.length];
+                    System.arraycopy(p, 0, reg, 0, p.length);
+                    e=i+1;
+                    List<String> list = new ArrayList<>();
+                    
+                    for(String s : reg) {
+                        if(s != null && s.length() > 0) {
+                            list.add(s);
+                        }
+                    }
+                    reg = list.toArray(new String[list.size()]);
+                    
+                    arr[i]=String.valueOf(e);
+                    fw1.write(e+" Variables "+Arrays.toString(reg));
+                    fw1.newLine();
+                    fw1.flush();
+                    
+//                    System.out.println(e+" Variables "+Arrays.toString(reg)+Arrays.toString(arr)); 
+                } 
             }
         }   
     }
-//        Induccion ind=new Induccion(g, fw1);
-        Gencod gc=new Gencod(p);
+        Induccion ind=new Induccion(f,g, i, e, reg, arr, fw1);
+        Gencod gj=new Gencod(p,veccod);
     }
+
+
+public String[] asignarVectores(List<List<String>> g,  int i, String key, BufferedWriter fw1)
+{
+        try {
+            while(g.get(i).size()>2){
+                vector=g.get(i).get(2);
+                break;
+            }
+            String[] replace ;
+            String register = "";
+            if(key.contains("[")&&key.contains("]"))
+            {
+                replace=key.split("");
+                
+                for (int j = 0; j < replace.length; j++) {
+                    if (Character.isDigit(replace[j].charAt(0))) {
+                        register=replace[j];
+                    }
+                }
+                
+            }
+            
+            int espacioMem=Integer.valueOf(register);
+            int m=4;
+            int cambiar = 0;
+//                    System.out.println(espacioMem+"___"+register+"___"+vector);
+            vec=new String[espacioMem*m];
+            
+            for (int j = 0; j < vec.length; j++) {
+                
+                if(j>3)
+                {
+                    cambiar++;
+                    vec[j]=vector+String.valueOf(cambiar);
+                    
+                    if(cambiar>4)
+                    {
+                        cambiar=0;
+                        cambiar++;
+                        vec[j]=vector+String.valueOf(cambiar);
+                    }
+                    
+                }
+                else
+                {
+                    String x=String.valueOf(j+1);
+                    vec[j]=vector+String.valueOf(x);
+                }
+               
+            }
+//                    System.out.println(Arrays.toString(vec)+"")
+            int e=i+1;
+             fw1.write(e+" Variable "+vector+" genera Vector "+Arrays.toString(vec));
+             fw1.newLine();
+             fw1.flush();
+          
+        } catch (IOException ex) {
+            Logger.getLogger(escribirTipos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+      return vec;
+}
+
+
 }
