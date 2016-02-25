@@ -8,14 +8,17 @@ public class Gencod {
 BufferedWriter bw1;
 Reg csv;
         
+public Gencod(){}
+
 public Gencod(int lineas1){
     File archivo = new File("D:\\gc.asm");
     archivo("D:\\simbolos.txt", bw1, lineas1);
     }
 
-public Gencod(String[] st) { 
+public Gencod(String[] var, String[] vec) { 
       System.out.println("\nGENERACIÓN DE CÓDIGO");
-      csv = new Reg(st);}
+      csv = new Reg(var,vec);      
+}
     
 public void archivo(String rutaArchivo, BufferedWriter bw1, int lineas1)
 {
