@@ -7,7 +7,6 @@ import java.util.logging.*;
 public class Extraer {
     String primero="";
     String last="";
-    public  BufferedWriter bw1=null;
     List<List<String>> stringArray;
     List<List<String>> stringArray2;
     
@@ -20,7 +19,7 @@ public class Extraer {
 //        System.out.println(stringArray.size()+"");
     }
 
-public Extraer(String esimbolostxt, BufferedReader br, String bufferIn, DataInputStream in, int lineas1) throws IOException {
+public Extraer(String esimbolostxt, BufferedWriter bw1, BufferedReader br, String bufferIn, DataInputStream in, int lineas1) throws IOException {
    ext(lineas1);
     int NumeroLineas = 1;
         int nrol = 0;
