@@ -13,21 +13,20 @@ public class escribirTipos {
     String vector;
     String []reg;
     
-    public escribirTipos( List<List<String>> stringArray2, int lineas1, String bufferIn, DataInputStream in, BufferedWriter bw1, BufferedReader br) throws IOException {
+    public escribirTipos( List<List<String>> sintactica, int lineas1, String bufferIn, DataInputStream in, BufferedWriter bw1, BufferedReader br) throws IOException {
         lineas1 = lineas1 - 1;
+        int doblereg=lineas1+lineas1;
+        p=new String[doblereg];
         
-//        int doblereg=lineas1+lineas1;
-        p=new String[lineas1];
-        
-        List<List<String>> stringArray3 = new ArrayList<>(lineas1);
-        for (int i = 0; i < lineas1; i++) { stringArray3.add(new ArrayList<>());}
-        semantics(stringArray2,stringArray3, bufferIn, in, bw1, br);
+        List<List<String>> variables = new ArrayList<>(lineas1);
+        for (int i = 0; i < lineas1; i++) { variables.add(new ArrayList<>());}
+        semantics(sintactica, variables, bufferIn, in, bw1, br, lineas1);
     }
     
-    public void semantics(List<List<String>> stringArra, List<List<String>> stringArray, String bufferIn, 
-            DataInputStream in, BufferedWriter fw1, BufferedReader br) throws IOException {
-    int NumeroLineas = 1;
-    int nrol = 0;
+    public void semantics(List<List<String>> sintactica, List<List<String>> variables, String bufferIn, 
+            DataInputStream in, BufferedWriter fw1, BufferedReader br, int lineas1) throws IOException {
+    
+    int NumeroLineas = 1,nrol = 0;
         try {
             while ((bufferIn = in.readLine()) != null && br.readLine() != null) {
                 int i = 0;
@@ -41,7 +40,7 @@ public class escribirTipos {
                             part3 = st.nextToken();
                             part4 = st.nextToken();
 
-                            partir(stringArray, part2, part3, part4);
+                            partir(variables, part2, part3, part4);
                             nrol = lineastxt(part2);
                         }
                         break;
@@ -52,12 +51,10 @@ public class escribirTipos {
                 i++;
                 NumeroLineas++;
             }
-            
-            repeticion(stringArra, stringArray, nrol, fw1);
+//            System.out.println(variables.toString()+"");
+            repeticion(sintactica, variables, nrol, fw1, lineas1);
 
-        } catch (IOException ex) {
-            Logger.getLogger(escribirTipos.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        } catch (IOException ex) {Logger.getLogger(escribirTipos.class.getName()).log(Level.SEVERE, null, ex);}
     }
 
     public List<List<String>> partir(List<List<String>> stringArray, String part2, String part3, String part4) throws IOException {
@@ -97,46 +94,74 @@ public class escribirTipos {
 
     public int lineastxt(String part2) {int nrol = Integer.valueOf(part2);return nrol;}
 
-    public void repeticion(List<List<String>> f,List<List<String>> g, int nrol, BufferedWriter fw1) throws IOException {
-        int l = g.size() - 1;
+    public void repeticion(List<List<String>> sint ,List<List<String>> var, int nrol, BufferedWriter fw1, int lineas1) throws IOException {
+        int l = var.size() - 1;
         for (int k = 0; k < l; k++) {
-        for (int j = 1; j < g.size(); j++) {
-             
-                if (g.get(k).size() > 1 && g.get(j).size() > 1 && k != j) { 
-//                    System.out.println(g.get(k).get(1)+(g.get(j).get(1)));
-                    if (g.get(k).get(1).equals(g.get(j).get(1))) {
+        for (int j = 1; j < var.size(); j++) {
+            if (var.get(k).size() > 1 && var.get(j).size() > 1 && k != j) { 
+                    if (var.get(k).get(1).equals(var.get(j).get(1))) {
                         nrol = j + 1;
-                        System.out.println(g.get(k).get(1)+" --y-- "+g.get(j).get(1));
+                        System.out.println(var.get(k).get(1)+" --y-- "+var.get(j).get(1));
                         System.out.println("Error semántico en línea " + j+" y en línea "+nrol); 
 //                        break;
                     }
-                    else if (g.get(k).get(1).equals(g.get(j).get(2))) {
-                        System.out.println(g.get(k).get(1)+" --y-- "+g.get(j).get(2));
+                    else if (var.get(k).get(1).equals(var.get(j).get(2))) {
+                        System.out.println(var.get(k).get(1)+" --y-- "+var.get(j).get(2));
                         nrol = j + 1;
                         System.out.println("Error semántico en línea " + j+" y en línea "+nrol); 
                         break;
                     }
-                    else if (g.get(k).get(1).equals("=") || g.get(j).get(1).equals(";")
-                        ||g.get(j).get(2).equals("(")||g.get(j).get(2).equals(")")
-                        ||g.get(k).get(1).equals("(") || g.get(j).get(1).equals(")")
-                        ||g.get(j).get(2).equals("=")||g.get(j).get(2).equals(";")){}                
+                    else if (var.get(k).get(1).equals("=") || var.get(j).get(1).equals(";")
+                        ||var.get(j).get(2).equals("(")||var.get(j).get(2).equals(")")
+                        ||var.get(k).get(1).equals("(") || var.get(j).get(1).equals(")")
+                        ||var.get(j).get(2).equals("=")||var.get(j).get(2).equals(";")){}                
                 } 
               } break; 
             }
         System.out.println("Comprobación Finalizada\n");
-        asignar(f, g, fw1);
+        verificar(var, fw1, lineas1);
+        asignar(sint, var, fw1, lineas1);
     }
     
-    public void asignar(List<List<String>> f, List<List<String>> g, BufferedWriter fw1) throws IOException
+    public void verificar(List<List<String>> var, BufferedWriter fw1, int lineas1)
+    {
+        int l = var.size() - 1;
+        for (int k = 0; k < l; k++) {
+        for (int i = 1; i < var.size(); i++) 
+        {
+             if (var.get(k).size() > 1 && var.get(i).size() > 1 && k != i) { 
+                 if(Character.isLetter(var.get(i).get(0).charAt(0)))
+                 {
+                     if(var.get(k).get(0).equals(":void:")||var.get(k).get(0).equals("output")
+                             ||var.get(k).get(0).equals("int")||var.get(k).get(0).equals("if")
+                             ||var.get(k).get(0).equals("then")||var.get(k).get(0).equals("float"))
+                     {
+                        
+                         break;
+                     }
+                     else
+                     {
+                         
+                         break;
+                     }
+                 }
+                 
+             }
+        }
+        }
+    }
+    
+    
+    public void asignar(List<List<String>> sint, List<List<String>> var, BufferedWriter fw1, int lineas1) throws IOException
     {
         int i =0;
         int e = 0;
-        String[] arr = new String[20];
+        String[] arr = new String[lineas1];
         List<String> h = new ArrayList<>();
-        for (i = 0; i < g.size(); i++) {
+        for (i = 0; i < var.size(); i++) {
             
-        Set<String> quipu = new HashSet<>(g.get(i));
-        h.addAll(g.get(i));
+        Set<String> quipu = new HashSet<>(var.get(i));
+        h.addAll(var.get(i));
         for (String key : quipu) {
 //      System.out.println("valor "+key + " frecuencia: " + Collections.frequency(h, key));
             if(Collections.frequency(h, key)>1)
@@ -156,7 +181,7 @@ public class escribirTipos {
                 else if(key.equals("[0]:")||key.equals("[1]:")||key.equals("[2]:")||key.equals("[3]:")||key.equals("[4]:")||key.equals("[5]:")
                     ||key.equals("[6]:")||key.equals("[7]:")||key.equals("[8]:")||key.equals("[9]:"))
                    {
-                       veccod=asignarVectores(g, i, key, fw1);
+                       veccod=asignarVectores(var, i, key, fw1);
                     }
                 else
                 { 
@@ -178,20 +203,18 @@ public class escribirTipos {
                     fw1.write(e+" Variables "+Arrays.toString(reg));
                     fw1.newLine();
                     fw1.flush();
-                    
 //                    System.out.println(e+" Variables "+Arrays.toString(reg)+Arrays.toString(arr)); 
                 } 
             }
         }   
     }
-        Induccion ind=new Induccion(f,g, i, e, reg, arr, fw1);
+        Induccion ind=new Induccion(sint,var, i, e, reg, arr, fw1);
         Gencod gj=new Gencod(p,veccod);
     }
 
 
-public String[] asignarVectores(List<List<String>> g,  int i, String key, BufferedWriter fw1)
+public String[] asignarVectores(List<List<String>> g, int i, String key, BufferedWriter fw1) throws IOException
 {
-        try {
             while(g.get(i).size()>2){
                 vector=g.get(i).get(2);
                 break;
@@ -243,10 +266,6 @@ public String[] asignarVectores(List<List<String>> g,  int i, String key, Buffer
              fw1.write(e+" Variable "+vector+" genera Vector "+Arrays.toString(vec));
              fw1.newLine();
              fw1.flush();
-          
-        } catch (IOException ex) {
-            Logger.getLogger(escribirTipos.class.getName()).log(Level.SEVERE, null, ex);
-        }
       return vec;
 }
 
