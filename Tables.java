@@ -25,7 +25,8 @@ public final class Tables {
     ArrayList cs2=new ArrayList();                      ArrayList cs4=new ArrayList();
     ArrayList cs5=new ArrayList();                      ArrayList cs6=new ArrayList();
     ArrayList cs7=new ArrayList();
-   
+    ArrayList cs8=new ArrayList();
+    
     ArrayList call=new ArrayList();                 ArrayList cuerpo=new ArrayList();
     ArrayList fn=new ArrayList();                   ArrayList cuerpo1=new ArrayList();
     ArrayList cuerpo2=new ArrayList();              ArrayList fn1=new ArrayList();
@@ -64,7 +65,7 @@ public final class Tables {
    cs.add("Identificador,");
    cs.add("Operadorasignacion,");
    cs.add("Identificador,");
-   cs.add("Operadorunar1o,");
+   cs.add("Suma,");
    cs.add("Identificador,");  
     
     comandol2.add("Tipodedato,");                            cs4.add("Tipodedato,");
@@ -76,7 +77,7 @@ public final class Tables {
     cs1.add("Identificador,");                          cs2.add("Identificador,");
     cs1.add("Operadorasignacion,");                     cs2.add("Operadorasignacion,");
     cs1.add("Identificador,");                          cs2.add("Numero,");
-    cs1.add("MAS,");  /*i = x ++ */                   cs2.add("Operadorunar1o,"); 
+    cs1.add("MAS,");  /*i = x ++ */                   cs2.add("Suma,"); 
                                                         cs2.add("Numero,");              //i = 1 + 1 
     cs5.add("Tipodedato,");                             
     cs5.add("Identificador,");                         
@@ -95,7 +96,7 @@ public final class Tables {
     operacion2.add("Operadorasignacion,");                  operacion3.add("Identificador,");
     operacion2.add("Identificador,");                       operacion3.add("Operadorasignacion,");
     operacion2.add("MAS,");  /*i = x ++ ;*/                operacion3.add("Numero,");
-    operacion2.add("Terminador,");                          operacion3.add("Operadorunar1o,"); 
+    operacion2.add("Terminador,");                          operacion3.add("Suma,"); 
                                                             operacion3.add("Numero,");              //i = 1 + 1 ;
     operacion4.add("Identificador,");                       operacion3.add("Terminador,"); 
     operacion4.add("MAS,");   // i ++ ;
@@ -175,9 +176,21 @@ public final class Tables {
     cs7.add("Identificador,");
     cs7.add("Operadorasignacion,");
     cs7.add("Identificador,");
-    cs7.add("Operadorunar1o,");         /* a = b + c */
+    cs7.add("Suma,");         /* a = b + c */
     cs7.add("Identificador,");
     cs7.add("Caracterespecial,");
+    
+    cs8.add("Caracterespecial,");
+    cs8.add("Identificador,");
+    cs8.add("Operadorasignacion,");
+    cs8.add("Identificador,");
+    cs8.add("Suma,");         /* a = b + c ^ c = 2 */
+    cs8.add("Identificador,");
+    cs8.add("Caracterspecial,");
+    cs8.add("Identificador,");
+    cs8.add("Operadorasignacion,");
+    cs8.add("Numero,");
+    cs8.add("Caracterespecial,");
     
         flujo1.add("Palabrareservadaf,"); //if (expresión) then declaraciones
         
@@ -460,9 +473,11 @@ public final class Tables {
             else
             {   
                 declaracionesglobales(h, fw1, i, linea); 
-                llamadaFunciones(h, i, linea, fw1);}
+                llamadaFunciones(h, i, linea, fw1);
+            }
+        }
             
-            }} catch (IOException ex) {Logger.getLogger(Tables.class.getName()).log(Level.SEVERE, null, ex);}
+        } catch (IOException ex) {Logger.getLogger(Tables.class.getName()).log(Level.SEVERE, null, ex);}
     }
 
     public void declaracionesglobales(List<List<String>> h, BufferedWriter fw1, int i, long linea) throws IOException
@@ -518,55 +533,59 @@ public final class Tables {
     public void declaracioneslocales(List<List<String>> h, BufferedWriter fw1, int i, long linea) throws IOException
     {
 
-   if(h.get(i).equals(declaracionl2)){linea=i+1;System.out.println("Declaracion local en línea "+linea);
-   fw1.write(linea+" Tipodedato "+"operadorFuncionvacio "+"Identificador "+"Declaracionlocal");
-   fw1.newLine();
-   fw1.flush();}
-   if(h.get(i).equals(declaracionl)){linea=i+1;System.out.println("Declaracion local en línea "+linea);
-   fw1.write(linea+" Tipodedato "+"Identificador "+"Declaracionlocal");
-   fw1.newLine();
-   fw1.flush();}
-   if(h.get(i).equals(comandol3)){linea=i+1;System.out.println("Declaracion local en línea "+linea);
-  fw1.write(linea+" Tipodedato "+"Identificador "+"operadorasignacion "+"Numero "+"Declaracionlocal");
-   fw1.newLine();
-   fw1.flush();}
-   if(h.get(i).equals(comandol2)){linea=i+1;System.out.println("Declaracion local en línea "+linea);
-  fw1.write(linea+" Tipodedato "+"operadorFuncionvacio "+"Identificador "+"Operadorasignacion "+"Terminador "+"Declaracionlocal");
-   fw1.newLine();
-   fw1.flush();}
-   if(h.get(i).equals(comandol)){
-   linea=i+1;System.out.println("Declaracion local (vector) en línea "+linea);
-  fw1.write(linea+" Tipodedato "+"operadorFuncion "+"Identificador "+"Operadorasignacion "+"Identificador "+"Declaracionlocal");
-   fw1.newLine();
-   fw1.flush();}
-   if(h.get(i).equals(cs)){linea=i+1;System.out.println("Declaracion local en línea "+linea);
-   fw1.write(linea+" Identificador "+"Operadorasignacion "+"Identificador "+"Operadorunario "+"Identificador "+"Declaracionlocal");
-   fw1.newLine();
-   fw1.flush();}
-   if(h.get(i).equals(cs1)){linea=i+1;System.out.println("Declaracion local en línea "+linea);
-   fw1.write(linea+" Identificador "+"Operadorasignacion "+"Identificador "+"MAS "+"Atribucion");
-   fw1.newLine();
-   fw1.flush();}
-   if(h.get(i).equals(cs2)){linea=i+1;System.out.println("Declaracion local en línea "+linea);
-   fw1.write(linea+" Identificador "+"Operadorasignacion "+"Numero "+"Operadorunar1o "+"Numero "+"Aritmetica");
-   fw1.newLine();
-   fw1.flush();}
-   if(h.get(i).equals(cs3)){linea=i+1;System.out.println("Declaracion local en línea "+linea);
-   fw1.write(linea+" Identificador "+"MAS "+ "Declaracionlocal");
-   fw1.newLine();
-   fw1.flush();}
-   if(h.get(i).equals(cs4)){linea=i+1;System.out.println("Declaracion local en línea "+linea);
-   fw1.write(linea+" Tipodedato "+ "operadorFuncion "+"Identificador "+"Declaracionlocal");
-   fw1.newLine();
-   fw1.flush();}
-   if(h.get(i).equals(cs5)){linea=i+1;System.out.println("Declaracion local en línea "+linea);
-   fw1.write(linea+" Tipodedato "+ "Identificador "+"Operadorasignacion "+"Identificador "+"Declaracionlocal");
-   fw1.newLine();
-   fw1.flush();}
-   else
-   {
-       atribucion(h, fw1, i, linea);
-   }
+       if(h.get(i).equals(declaracionl2)){linea=i+1;System.out.println("Declaracion local en línea "+linea);
+       fw1.write(linea+" Tipodedato "+"operadorFuncionvacio "+"Identificador "+"Declaracionlocal");
+       fw1.newLine();
+       fw1.flush();}
+       if(h.get(i).equals(declaracionl)){linea=i+1;System.out.println("Declaracion local en línea "+linea);
+       fw1.write(linea+" Tipodedato "+"Identificador "+"Declaracionlocal");
+       fw1.newLine();
+       fw1.flush();}
+       if(h.get(i).equals(comandol3)){linea=i+1;System.out.println("Declaracion local en línea "+linea);
+      fw1.write(linea+" Tipodedato "+"Identificador "+"operadorasignacion "+"Numero "+"Declaracionlocal");
+       fw1.newLine();
+       fw1.flush();}
+       if(h.get(i).equals(comandol2)){linea=i+1;System.out.println("Declaracion local en línea "+linea);
+      fw1.write(linea+" Tipodedato "+"operadorFuncionvacio "+"Identificador "
+              +"Operadorasignacion "+"Terminador "+"Declaracionlocal");
+       fw1.newLine();
+       fw1.flush();}
+       if(h.get(i).equals(comandol)){
+       linea=i+1;System.out.println("Declaracion local (vector) en línea "+linea);
+      fw1.write(linea+" Tipodedato "+"operadorFuncion "+"Identificador "
+              +"Operadorasignacion "+"Identificador "+"Declaracionlocal");
+       fw1.newLine();
+       fw1.flush();}
+       if(h.get(i).equals(cs)){linea=i+1;System.out.println("Declaracion local en línea "+linea);
+       fw1.write(linea+" Identificador "+"Operadorasignacion "+"Identificador "
+               +"Operadorunario "+"Identificador "+"Declaracionlocal");
+       fw1.newLine();
+       fw1.flush();}
+       if(h.get(i).equals(cs1)){linea=i+1;System.out.println("Declaracion local en línea "+linea);
+       fw1.write(linea+" Identificador "+"Operadorasignacion "+"Identificador "+"MAS "+"AtribucionconOperador");
+       fw1.newLine();
+       fw1.flush();}
+       if(h.get(i).equals(cs2)){linea=i+1;System.out.println("Declaracion local en línea "+linea);
+       fw1.write(linea+" Identificador "+"Operadorasignacion "+"Numero "
+               +"Operadorunario "+"Numero "+"Aritmetica");
+       fw1.newLine();
+       fw1.flush();}
+       if(h.get(i).equals(cs3)){linea=i+1;System.out.println("Declaracion local en línea "+linea);
+       fw1.write(linea+" Identificador "+"MAS "+ "DeclaracionlocalconOperador");
+       fw1.newLine();
+       fw1.flush();}
+       if(h.get(i).equals(cs4)){linea=i+1;System.out.println("Declaracion local en línea "+linea);
+       fw1.write(linea+" Tipodedato "+ "operadorFuncion "+"Identificador "+"Declaracionlocal");
+       fw1.newLine();
+       fw1.flush();}
+       if(h.get(i).equals(cs5)){linea=i+1;System.out.println("Declaracion local en línea "+linea);
+       fw1.write(linea+" Tipodedato "+ "Identificador "+"Operadorasignacion "+"Identificador "+"Declaracionlocal");
+       fw1.newLine();
+       fw1.flush();}
+       else
+       {
+           atribucion(h, fw1, i, linea);
+       }
 }
     
     public void atribucion(List<List<String>> h, BufferedWriter fw1, int i, long linea) throws IOException
@@ -603,17 +622,17 @@ public final class Tables {
     public void comandosSimples(List<List<String>> h, BufferedWriter fw1, int i, long linea) throws IOException
     { 
        if(h.get(i).equals(operacion4)){linea=i+1;System.out.println("Atribución (comandosimple) en línea "+linea);
-       fw1.write(linea+" Identificador "+"MAS "+"Terminador "+"Atribucion(comandosimple)");
+       fw1.write(linea+" Identificador "+"MAS "+"Terminador "+"Atribucion(comandosimple)Operador");
        fw1.newLine();
        fw1.flush();}
        if(h.get(i).equals(operacion3)){linea=i+1;System.out.println("Atribución (comandosimple) en línea "+linea);
-       fw1.write(linea+" Identificador "+"Operadorasignacion "+"Numero "+"Operadorunar1o "
+       fw1.write(linea+" Identificador "+"Operadorasignacion "+"Numero "+"Operadorunario "
                +"Numero "+"Terminador "+"Atribucion(comandosimple)");
        fw1.newLine();
        fw1.flush();}
        if(h.get(i).equals(operacion2)){linea=i+1;System.out.println("Atribución (comandosimple) en línea "+linea);
        fw1.write(linea+" Identificador "+"Operadorasignacion "+"Identificador "
-               +"MAS "+"Terminador "+"Atribucion(comandosimple)");
+               +"MAS "+"Terminador "+"Atribucion(comandosimple)Operador");
        fw1.newLine();
        fw1.flush();}
        if(h.get(i).equals(comando4)){linea=i+1;System.out.println("Atribución (comandosimple) en línea "+linea);
@@ -622,7 +641,7 @@ public final class Tables {
        fw1.flush();}
        if(h.get(i).equals(operacion)){ linea=i+1;System.out.println("Atribución (comandosimple) en línea "+linea);
        fw1.write(linea+" Identificador "+ "Operadorasignacion "+"Identificador "
-               + "Operadorunar1o "+"Terminador "+"Atribucion(comandosimple)");
+               + "Operadorunario "+"Terminador "+"Atribucion(comandosimple)");
        fw1.newLine();
        fw1.flush();}
        if(h.get(i).equals(cs6)){ linea=i+1;System.out.println("Atribución (comandosimple) en línea "+linea);
@@ -633,6 +652,12 @@ public final class Tables {
        if(h.get(i).equals(cs7)){ linea=i+1;System.out.println("Atribución (comandosimple) en línea "+linea);
        fw1.write(linea+" Identificador "+ "Operadorasignacion "+"Identificador "
                + "Operadorunario "+"Identificador "+"Atribucion(comandosimple)");
+       fw1.newLine();
+       fw1.flush();}
+       if(h.get(i).equals(cs8)){ linea=i+1;System.out.println("Atribución (comandosimple) en línea "+linea);
+       fw1.write(linea+" Caracterespecial "+"Identificador "+"Operadorasignacion "+"Identificador "
+               +"Suma "+"Identificador "+"Caracterspecial "+"Identificador "
+               +"Operadorasignacion "+"Numero "+"Caracterespecial "+" Atribucion(comandosimple)AND");
        fw1.newLine();
        fw1.flush();}
     }
@@ -701,6 +726,10 @@ public final class Tables {
                 fw1.newLine();
                 fw1.flush();
             }
+        else
+        {
+            System.out.println("Se esperaba un caracter especial para el cuerpo de función en línea "+e);  
+        }
     }
     
     public void controlFlujo(List<List<String>> h, BufferedWriter fw1, int i, long e) throws IOException
@@ -738,6 +767,7 @@ public final class Tables {
            fw1.newLine();
            fw1.flush();
         }
+        
     }
 
     public void funcionesArgumentos(List<List<String>> h, BufferedWriter fw1, int i, int e, long linea) throws IOException
