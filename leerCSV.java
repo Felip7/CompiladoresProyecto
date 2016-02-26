@@ -10,18 +10,16 @@ public class leerCSV {
     
     //Estructura del archivo de entrada
     List<List<String>> c1=new ArrayList<>();
-    ArrayList h2=new ArrayList();
     String part2 = "", part3 = "";
 
 public leerCSV(int lineas1, String bufferIn, DataInputStream in, BufferedWriter fw1, BufferedReader br) throws IOException {
     lineas1=lineas1-1;
     List<List<String>> stringArray = new ArrayList<>(lineas1);
-     
+    
     for (int i = 0; i < lineas1; i++) 
-      {
-           stringArray.add(new ArrayList<>());
-      }
-   syntax(stringArray,bufferIn, in, fw1, br);
+      {stringArray.add(new ArrayList<>());}
+   
+    syntax(stringArray,bufferIn, in, fw1, br);
 }
 
 public void syntax(List<List<String>> stringArray, String bufferIn, DataInputStream in, 
@@ -93,5 +91,8 @@ public List<List<String>> partir(List<List<String>> stringArray, String part2, S
    }
 
 public int lineastxt(String part2)
-{int nrol=Integer.valueOf(part2);return nrol;}
+{
+    int nrol=Integer.valueOf(part2);
+    return nrol;
+}
 }
