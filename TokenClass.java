@@ -183,7 +183,7 @@ public static boolean caracterEsp (char c, BufferedWriter fw1, long NumeroLineas
                 return true;
             case '*':
                 System.out.println(NumeroLineas+" Operador unario, " + c);
-                fw1.write(NumeroLineas+" Operadorunar1o, " + c    );
+                fw1.write(NumeroLineas+" Multiplicacion, " + c    );
                 fw1.newLine();
                 fw1.flush();
                 return true;
@@ -195,19 +195,19 @@ public static boolean caracterEsp (char c, BufferedWriter fw1, long NumeroLineas
                 return true;
             case '+':
                 System.out.println(NumeroLineas+" Operador unario, " + c);
-                fw1.write(NumeroLineas+" Operadorunar1o, " + c );
+                fw1.write(NumeroLineas+" Suma, " + c );
                 fw1.newLine();
                 fw1.flush();
                 return true;
             case '-':
                 System.out.println(NumeroLineas+" Operador unario, " + c);
-                fw1.write(NumeroLineas+" Operadorunar1o, " + c);
+                fw1.write(NumeroLineas+" Resta, " + c);
                 fw1.newLine();
                 fw1.flush();
                 return true;
             case '/':
                 System.out.println(NumeroLineas+" Operador unario, " + c);
-                fw1.write(NumeroLineas+" Operadorunar1o, " + c );
+                fw1.write(NumeroLineas+" División, " + c );
                 fw1.newLine();
                 fw1.flush();
                 return true;
